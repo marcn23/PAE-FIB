@@ -19,28 +19,25 @@ def set_need_appearances_writer(writer: PdfWriter):
         return writer
 
 if __name__ == '__main__':
-    # csv_filename = "data.csv"
-    pdf_filename = "SGAE.pdf"
-    csv_filename = "okData.csv"
-    # pdf_filename = "EIS 3 Certificate - Autofilled.pdf"
-
-    # csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
+    pdf_filename = "SGAE_Autoliquidacio.pdf"
+    csv_filename = "InfoAutoliquidacio.csv"
+    
     pdfin = os.path.normpath(os.path.join(os.getcwd(),'in',pdf_filename))
     pdfout = os.path.normpath(os.path.join(os.getcwd(),'out'))
-    csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
-    data = pd.read_csv(csvin)
+    if not os.path.exists(pdfout):
+        # If it doesn't exist, create the directory and any intermediate directories
+        os.makedirs(pdfout)
 
-    # print(data.columns[0])
+    csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
+    
+    data = pd.read_csv(csvin)
 
     pdf = PdfReader(open(pdfin, "rb"), strict=False)  
     if "/AcroForm" in pdf.trailer["/Root"]:
         pdf.trailer["/Root"]["/AcroForm"].update(
             {NameObject("/NeedAppearances"): BooleanObject(True)})
     pdf_fields = pdf.get_fields()
-    #pdf_fields = [str(x) for x in pdf.get_fields().keys] # List of all pdf field names
     csv_fields = data.columns.tolist()
-    # print(pdf_fields)
-    #print(csv_fields)
     i = 0 #Filename numerical prefix
     for j, rows in data.iterrows():
         i += 1   
@@ -51,7 +48,6 @@ if __name__ == '__main__':
                 {NameObject("/NeedAppearances"): BooleanObject(True)})
         
         # Key = pdf_field_name : Value = csv_field_value
-        
         field_dictionary_1 = {
         "Audicions i/o ballades: Dies": rows['DiesAudicio'],
         "Audicions i/o ballades a": rows['PreuAudicio'],
@@ -95,13 +91,10 @@ if __name__ == '__main__':
         "Telèfon:": rows['Telf'],
         "A:": rows['Lloc'] }
 
-        temp_out_dir = os.path.normpath(os.path.join(pdfout,str(i) + 'out.pdf'))
+        temp_out_dir = os.path.normpath(os.path.join(pdfout,str(rows['Agrupacio']) + '_Autoliquidacio.pdf'))
         pdf2.add_page(pdf.pages[0])
         pdf2.update_page_form_field_values(pdf2.pages[0], field_dictionary_1)
-        # pdf2.add_page(pdf.pages[1])
-        # pdf2.add_page(pdf.pages[2])
-        # pdf2.add_page(pdf.pages[3])
         outputStream = open(temp_out_dir, "wb")
         pdf2.write(outputStream)
         outputStream.close()
-    print(f'Process Complete: PDFs Processed!')
+    print(f'El·laboracio d\'arxius finalitzada')
