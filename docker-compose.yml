@@ -11,6 +11,14 @@ services:
     ports:
       - "3306:3306"        
         
+  frontend:
+          image: nginx
+          container_name: frontend
+          volumes: 
+            - ./htmls:/usr/share/nginx/html
+          ports: 
+            - "80:80"
+
   generate_pdf:
     build: .
     volumes:
