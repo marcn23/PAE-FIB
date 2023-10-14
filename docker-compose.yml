@@ -1,5 +1,16 @@
 version: '3'
 services:
+  db:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: patata
+      MYSQL_DATABASE: granier
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"        
+        
   generate_pdf:
     build: .
     volumes:
