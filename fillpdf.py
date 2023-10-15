@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from PyPDF2 import PdfWriter, PdfReader
+from PyPDF2 import PdfMerger, PdfReader, PdfWriter, PdfReader
 from PyPDF2.generic import BooleanObject, NameObject, IndirectObject
 
 
@@ -49,20 +49,20 @@ if __name__ == '__main__':
         
         # Key = pdf_field_name : Value = csv_field_value
         field_dictionary_1 = {
-        "Audicions i/o ballades: Dies": rows['DiesAudicio'],
-        "Audicions i/o ballades a": rows['PreuAudicio'],
-        "Audicions i/o ballades a: €:": "?",
+        # "Audicions i/o ballades: Dies": rows['DiesAudicio'],
+        # "Audicions i/o ballades a": rows['PreuAudicio'],
+        "Audicions i/o ballades a: €:": rows['PreuAudicio'],
         "Nombre de cobles: €": str("?"),
         "Concursos de sardanes: Dies": rows['DiesConcurs'],
         "Nombre de cobles": rows['NombreDeCobles'],
         "Si és gratuit:": rows['RecaptacioConcert'],
         "Aplecs i/o concerts: Dies": rows['DiesConcert'],
         "Si és gratuit: €": "?",
-        "Si hi ha recaptació: 10% s/taquilla": str("?"),
+        # "Si hi ha recaptació: 10% s/taquilla": str("?"),
         "Si hi ha recaptació: 10% s/taquilla: €": str("?"),
         "Base imposable: €": str("?"),
         "TOTAL A PAGAR: €": str("?"),
-        "nombre": str("where?"),
+        "nombre": rows['DiesAudicio'],
         "Dia-1:": rows['D1'],
         "Full núm-1:": rows['FullN1'],
         "Dia-2:": rows['D2'],
@@ -97,4 +97,16 @@ if __name__ == '__main__':
         outputStream = open(temp_out_dir, "wb")
         pdf2.write(outputStream)
         outputStream.close()
+
+        #In case it is needed 
+        teorical_extra_sheet = os.path.normpath(os.path.join(os.getcwd(),'in','Repertoris',str(rows['Agrupacio']) + '_Repertori.pdf'))
+        print(teorical_extra_sheet)
+        if os.path.exists(teorical_extra_sheet): 
+            merger = PdfMerger()
+    
+            merger.append(PdfReader(open(temp_out_dir, 'rb')))
+            merger.append(PdfReader(open(teorical_extra_sheet, 'rb')))
+            
+            merger.write(temp_out_dir)
+
     print(f'El·laboracio d\'arxius finalitzada')
