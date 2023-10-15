@@ -1,24 +1,26 @@
 version: '3'
 services:
-  # db:
-  #   image: mariadb
-  #   container_name: mariadb
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: patata
-  #     MYSQL_DATABASE: granier
-  #   volumes:
-  #     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  #   ports:
-  #     - "3306:3306"        
-        
-  # frontend:
-  #         image: nginx
-  #         container_name: frontend
-  #         volumes: 
-  #           - ./htmls:/usr/share/nginx/html
-  #         ports: 
-  #           - "80:80"
-  pae_api:
-    build: .
+  db:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: patata
+      MYSQL_DATABASE: granier
     volumes:
-      - ./out:/app/out
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"        
+  frontend:
+    image: nginx
+    container_name: frontend
+    volumes: 
+      - ./htmls:/usr/share/nginx/html
+    ports: 
+      - "80:80"
+  api:
+    build: api/.
+    volumes:
+      - ./api/out:/app/out
+    ports:
+      - "5000:5000"
+
