@@ -18,7 +18,7 @@ CREATE TABLE events (
     Cobla3 VARCHAR(255),
     Canvis VARCHAR(255),
     IDEN INT(10) NOT NULL,
-    LinkPrograma, VARCHAR(1024)
+    LinkPrograma VARCHAR(1024),
     Autor VARCHAR(255) NOT NULL,
     DataCreacio TIMESTAMP NOT NULL,
     DataCanvis TIMESTAMP,
