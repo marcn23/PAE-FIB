@@ -10,7 +10,7 @@ app = Flask(__name__)
 #    database="granier",
 #)
 
-@app.route("/api/base")
+@app.route("/api/base", methods=['POST'])
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
 
