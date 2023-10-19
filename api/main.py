@@ -18,11 +18,11 @@ def hello_world():
 def test():
     return "<p>This is a test</p>"
 
-@app.route('/api/base', methods=['POST'])
+@app.route('/base', methods=['POST'])
 def process_frontend_data():
-    data = request.json  # Assuming the frontend sends JSON data
+    #data = request.json  # Assuming the frontend sends JSON data
 
-    cursor = db_connection.cursor()
+    #cursor = db_connection.cursor()
     # Perform database operations using the cursor
     return "<p>puta</p>"
     #return jsonify({"message": "Data processed successfully"})
