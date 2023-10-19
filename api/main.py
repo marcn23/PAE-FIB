@@ -3,14 +3,14 @@ import mysql.connector
 app = Flask(__name__)
 
 
-db_connection = mysql.connector.connect(
-    host="db",  # This should match the service name in your Docker Compose file
-    user="root",
-    password="patata",
-    database="granier",
-)
+#db_connection = mysql.connector.connect(
+#    host="db",  # This should match the service name in your Docker Compose file
+#    user="root",
+#    password="patata",
+#    database="granier",
+#)
 
-@app.route("/base")
+@app.route("/api/base")
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
 
