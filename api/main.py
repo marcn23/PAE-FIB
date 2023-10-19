@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 #import mysql.connector
+import sys
 app = Flask(__name__)
 
 
@@ -13,7 +14,7 @@ app = Flask(__name__)
 @app.route("/api/base", methods=['POST'])
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
-    print("avon")
+    print("avon", file=sys.stderr)
     #cursor = db_connection.cursor()
     # Perform database operations using the cursor
     return "<p>puta</p>"
