@@ -17,8 +17,8 @@ def proc_data():
     print("avon", file=sys.stderr)
     #cursor = db_connection.cursor()
     # Perform database operations using the cursor
-    return "<p>puta</p>"
-    #return jsonify({"message": "Data processed successfully"})
+    #return "<p>puta</p>"
+    return jsonify({"message": "Data processed successfully"})
 
 @app.route("/")
 def hello_world():
