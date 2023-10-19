@@ -10,6 +10,15 @@ db_connection = mysql.connector.connect(
     database="granier",
 )
 
+@app.route("/api/base")
+def proc_data():
+    #data = request.json  # Assuming the frontend sends JSON data
+
+    #cursor = db_connection.cursor()
+    # Perform database operations using the cursor
+    return "<p>puta</p>"
+    #return jsonify({"message": "Data processed successfully"})
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
@@ -18,14 +27,7 @@ def hello_world():
 def test():
     return "<p>This is a test</p>"
 
-@app.route("/api/base")
-def process_frontend_data():
-    #data = request.json  # Assuming the frontend sends JSON data
 
-    #cursor = db_connection.cursor()
-    # Perform database operations using the cursor
-    return "<p>puta</p>"
-    #return jsonify({"message": "Data processed successfully"})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
