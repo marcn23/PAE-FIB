@@ -18,7 +18,7 @@ def hello_world():
 def test():
     return "<p>This is a test</p>"
 
-@app.route('/base', methods=['POST'])
+@app.route('/api/base', methods=['POST'])
 def process_frontend_data():
     #data = request.json  # Assuming the frontend sends JSON data
 
