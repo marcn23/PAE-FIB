@@ -12,8 +12,12 @@ db_connection = mysql.connector.connect(
 
 @app.route("/base")
 def proc_data():
-   return "<p>Hello, World!</p>"
+    #data = request.json  # Assuming the frontend sends JSON data
 
+    #cursor = db_connection.cursor()
+    # Perform database operations using the cursor
+    return "<p>puta</p>"
+    #return jsonify({"message": "Data processed successfully"})
 
 @app.route("/")
 def hello_world():
@@ -21,12 +25,7 @@ def hello_world():
 
 @app.route("/testing")
 def test():
-     #data = request.json  # Assuming the frontend sends JSON data
-
-    #cursor = db_connection.cursor()
-    # Perform database operations using the cursor
-    return "<p>puta</p>"
-    #return jsonify({"message": "Data processed successfully"})
+    return "<p>This is a not test</p>"
 
 
 
