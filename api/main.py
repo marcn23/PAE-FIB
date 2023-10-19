@@ -10,7 +10,7 @@ db_connection = mysql.connector.connect(
     database="granier",
 )
 
-@app.route("/api/base")
+@app.route("/base")
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
 
