@@ -1,5 +1,5 @@
-from flask import Flask, request, jsonify
-#import mysql.connector
+from flask import Flask, request, jsonify, Response, send_file
+import mysql.connector
 import sys
 app = Flask(__name__)
 
@@ -14,11 +14,24 @@ app = Flask(__name__)
 @app.route("/api/base", methods=['POST'])
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
-    print("avon", file=sys.stderr)
+    print("avonxd", file=sys.stderr)
+    #try:
+    #    print("avonxd2", file=sys.stderr)
+    #    return send_file("fillpdf.py", attachment_filename='ohhey.pdf')
+    
+    #except Exception as e:
+    #    print("avon2", file=sys.stderr)    
     #cursor = db_connection.cursor()
     # Perform database operations using the cursor
     #return "<p>puta</p>"
-    return jsonify({"message": "Data processed successfully"})
+    #return jsonify({"message": "Data processed successfully"})
+    with open('in/Programa2.pdf', 'rb') as pdf_file:
+        pdf_data = pdf_file.read()
+    print("avonxd2", file=sys.stderr)
+    response = Response(pdf_data, content_type='application/pdf')
+    response.headers['Content-Disposition'] = 'attachment; filename=example.pdf'
+    return response
+
 
 @app.route("/")
 def hello_world():

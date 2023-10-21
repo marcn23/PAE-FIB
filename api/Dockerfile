@@ -8,6 +8,7 @@ RUN pip install xlwt
 RUN pip install xlutils
 RUN pip install flask
 RUN pip install openpyxl
+RUN pip install mysql-connector-python
 
 WORKDIR /app
 
