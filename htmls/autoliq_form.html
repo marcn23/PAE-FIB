@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario HTML Básico</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        form {
+            width: 1200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+		.label-ball {
+            display: block;
+            margin-bottom: 10px;
+			margin-left: 3px;
+       }
+		input {
+			display: block;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			flex-grow: 1;
+		}
+		.form-group {
+			display: flex;
+            flex-direction: row; /* Cambiamos la dirección a horizontal (fila) */
+            align-items: center;
+            margin-bottom: 10px;
+		}
+    </style>
+</head>
+<body>
+    <form>
+        <center><h1>FORMULARI PER EMPLENAR LA AUTOLIQUIDACIO</h1></center>
+
+        <div class="form-group">
+			<label for="data-emplenament">Data emplenament:</label>
+			<input type="text" id="data-emplenament" name="data-emplenament" placeholder="Data emplenament">
+		</div>
+
+        <h2>Audicions i/o ballades</h2>
+		<div class="form-group">
+			<label for="Dies-audicions">Dies audicions:</label>
+			<input type="text" id="Dies" name="Dies" placeholder="Dies d'audicions i/o ballades (15/04/2023, 12/05/2023, ...)">
+		</div>
+        <div class="form-group">
+			<label for="Nombre-audicions">Dies:</label>
+			<input type="text" id="Nombre-audicions" name="Nombre-audicions" placeholder="Nombre d'audicions i/o ballades realitzades">
+		</div>
+        <div class="form-group">
+			<label for="Tarifa">Tarifa:</label>
+			<input type="text" id="tarifa" name="tarifa" placeholder="tarifa">
+		</div>
+
+        <h2>Concursos de sardanes</h2>
+        <div class="form-group">
+			<label for="Dies-concursos">Dies concursos:</label>
+			<input type="text" id="Dies-concursos" name="Dies-concursos" placeholder="Dies concursos">
+		</div>
+        <div class="form-group">
+			<label for="Nombre-cobles">Nombre cobles:</label>
+			<input type="text" id="Nombre-cobles" name="Nombre-cobles" placeholder="Nombre cobles">
+		</div>
+        <div class="form-group">
+			<label for="Preu">Preu::</label>
+			<input type="text" id="Preu" name="Preu" placeholder="Preu">
+		</div>
+
+        <h2>Aplecs i/o concerts</h2>
+        <div class="form-group">
+			<label for="Dies-aplecs">Dies aplecs:</label>
+			<input type="text" id="Dies-aplecs" name="Dies-aplecs" placeholder="Dies aplecs">
+		</div>
+        <div class="form-group">
+			<label for="Gratuit">Si es gratuit:</label>
+			<input type="text" id="Gratuit" name="Gratuit" placeholder="Gratuit">
+            <input type="text" id="preu-Gratuit" name="preu-Gratuit" placeholder="Preu (€)">
+		</div>
+        <div class="form-group">
+			<label for="Recaptacio">Si n'hi ha recaptació::</label>
+			<input type="text" id="recaptacio" name="recaptacio" placeholder="recaptació">
+            <input type="text" id="preu-Recap" name="preu-Recap" placeholder="Preu (€)">
+		</div>
+        <div class="form-group">
+			<label for="baseimposable">Base imposable:</label>
+			<input type="text" id="baseimposable" name= "baseimposable" placeholder="Preu (€)">
+		</div>
+        <div class="form-group">
+			<label for="iva">IVA:</label>
+			<input type="text" id="iva-percent" name= "iva-percent" placeholder="Percentatge (%)">
+            <input type="text" id="iva-preu" name= "iva-preu" placeholder="Preu (€)">
+		</div>
+        <div class="form-group">
+			<label for="total-pagar">Total a pagar:</label>
+			<input type="text" id="total-pagar" name= "total-pagar" placeholder="Preu (€)">
+		</div>
+
+		<button type="button" onclick="agregarCampo()">Afegir relació de fulls de progrma</button>
+		<script>
+			function agregarCampo() {
+				const form = document.querySelector('form');
+				const div = document.createElement('div');
+	            div.classList.add('form-group');
+
+				const label = document.createElement('label');
+				label.textContent = 'Dia:';
+				const input = document.createElement('input');
+				input.type = 'text';
+				input.placeholder = 'Dia';
+				div.appendChild(label);
+				div.appendChild(input);
+
+				const label2 = document.createElement('label');
+				label2.textContent = 'Full num.:';
+				label2.classList.add('label-ball');
+				const input2 = document.createElement('input');
+				input2.type = 'text';
+				input2.placeholder = 'Número de full';			
+				div.appendChild(label2);
+				div.appendChild(input2);
+
+				const targ = form.querySelectorAll('div')[12];
+				form.insertBefore(div, targ.nextElementSibling);
+			}
+		</script>
+
+
+		<h2>Declarant</h2>
+		<div class="form-group">
+			<label for="NIF-declarant">NIF:</label>
+			<input type="text" id="NIF-declarant" name="NIF-declarant" placeholder="NIF del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Ag-sard-declarant">Agrupació Sardanista:</label>
+			<input type="text" id="Ag-sard-declarant" name="Ag-sard-declarant" placeholder="Agrupació sardanista del declarant">
+		</div>
+        <div class="form-group">
+			<label for="Adresa-declarant">Adreça:</label>
+			<input type="text" id="Adresa-declarant" name="Adresa-declarant" placeholder="Adreça">
+		</div>
+		<div class="form-group">
+			<label for="CP-declarant">Codi postal:</label>
+			<input type="text" id="CP-declarant" name="CP-declarant" placeholder="Codi postal del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Poblacio-declarant">Població:</label>
+			<input type="text" id="Poblacio-declarant" name="Poblacio-declarant" placeholder="Poblacio del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Telefon-declarant">Teléfon:</label>
+			<input type="text" id="Telefon-declarant" name="Telefon-declarant" placeholder="Teléfon del declarant">
+		</div>
+
+
+		<h2>Dades bancaries</h2>
+		<div class="form-group">
+			<label for="titular-compte">Titular compte:</label>
+			<input type="text" id="titular-compte" name="titular-compte" placeholder="Titular del compte">
+		</div>
+		<div class="form-group">
+			<label for="entitat-compte">Entitat compte:</label>
+			<input type="text" id="titular-compte" name="titular-compte" placeholder="Titular del compte">
+		</div>
+		<div class="form-group">
+			<label for="sucursal-compte">Sucursal:</label>
+			<input type="text" id="sucursal-compte" name="sucursal-compte" placeholder="Sucursal del compte">
+		</div>
+		<div class="form-group">
+			<label for="provincia-compte">Provincia:</label>
+			<input type="text" id="provincia-compte" name="provincia-compte" placeholder="Provincia">
+		</div>
+		<div class="form-group">
+			<label for="data-pagament">Data pagament:</label>
+			<input type="text" id="data-pagament" name="data-pagament" placeholder="Data del pagament">
+		</div>
+		<div class="form-group">
+			<label for="IBAN-compte">IBAN:</label>
+			<input type="text" id="IBAN-compte" name="IBAN-compte" placeholder="ES-- ---- ---- ---- ---- ----">
+		</div>
+
+		<h2>Signatura</h2>
+		<div class="form-group">
+			<label for="lloc-signatura">Lloc signatura:</label>
+			<input type="text" id="lloc-signatura" name="lloc-signatura" placeholder="Lloc signatura">
+		</div>
+		<div class="form-group">
+			<label for="data-signatura">Data signatura:</label>
+			<input type="text" id="data-signatura" name="data-signatura" placeholder="Data signatura">
+		</div>
+        
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>
