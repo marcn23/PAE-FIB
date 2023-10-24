@@ -15,22 +15,22 @@ app = Flask(__name__)
 def proc_data():
     #data = request.json  # Assuming the frontend sends JSON data
     print("avonxd", file=sys.stderr)
-    #try:
+    try:
     #    print("avonxd2", file=sys.stderr)
     #    return send_file("fillpdf.py", attachment_filename='ohhey.pdf')
-    
-    #except Exception as e:
-    #    print("avon2", file=sys.stderr)    
+        return send_file('in/Programa2.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
+    except Exception as e:
+           print("avon2", file=sys.stderr)    
     #cursor = db_connection.cursor()
     # Perform database operations using the cursor
     #return "<p>puta</p>"
     #return jsonify({"message": "Data processed successfully"})
-    with open('in/Programa2.pdf', 'rb') as pdf_file:
-        pdf_data = pdf_file.read()
-    print("avonxd2", file=sys.stderr)
-    response = Response(pdf_data, content_type='application/pdf')
-    response.headers['Content-Disposition'] = 'attachment; filename=example.pdf'
-    return response
+    #with open('in/Programa2.pdf', 'rb') as pdf_file:
+      #  pdf_data = pdf_file.read()
+    #print("avonxd2", file=sys.stderr)
+    #response = Response(pdf_data, content_type='application/pdf')
+    #response.headers['Content-Disposition'] = 'attachment; filename=example.pdf'
+    #return response
 
 
 @app.route("/")
