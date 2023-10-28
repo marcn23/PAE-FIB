@@ -20,7 +20,7 @@ def set_need_appearances_writer(writer: PdfWriter):
 
 if __name__ == '__main__':
     pdf_filename = "Programa2.pdf"
-    csv_filename = "InfoPrograma.csv"
+    csv_filename = "output.csv"
     
     pdfin = os.path.normpath(os.path.join(os.getcwd(),'in',pdf_filename))
     pdfout = os.path.normpath(os.path.join(os.getcwd(),'out'))
@@ -221,9 +221,9 @@ if __name__ == '__main__':
             "28 2": rows["28 2"],
             "O_28": rows["O_28"],
             "13_2": rows["13_2"],
-            "29": rows["29"],
+            "29 1": rows["29 1"],
             "C_29": rows["C_29"],
-            "29": rows["29"],
+            "29 2": rows["29 2"],
             "O_29": rows["O_29"],
             "14_2": rows["14_2"],
             "30 1": rows["30 1"],
