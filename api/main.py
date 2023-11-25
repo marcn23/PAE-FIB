@@ -1,8 +1,13 @@
 from flask import Flask, request, jsonify, Response, send_file
+from flask_cors import CORS
 import mysql.connector
+from classes.Songs import Song
+from classes.Act import Act
+from classes.objectInstances import Objects
+from classes.Organization import Organization
 import sys
 app = Flask(__name__)
-
+CORS(app)
 
 #db_connection = mysql.connector.connect(
 #    host="db",  # This should match the service name in your Docker Compose file
@@ -13,25 +18,51 @@ app = Flask(__name__)
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
-    #data = request.json  # Assuming the frontend sends JSON data
-    print("avonxd", file=sys.stderr)
+    data = request.form.to_dict()
+    #data = request.get_json()  
+    print(data, file=sys.stderr)
+    print(data.get('Titol'), file=sys.stderr)
+
+    act = Act(
+        title=data.get('titleAct'),
+        event_number=data.get('event_number'),
+        local_name=data.get('local_name'),
+        order_number=data.get('order_number'),
+        invoice_number=data.get('invoice_number'),
+        city=data.get('city'),
+        province=data.get('province'),
+        liq_included=data.get('liq_included'),
+        sheet_number=data.get('sheet_number'),
+        title_number=data.get('title_number'),
+        parts=data.get('parts'),
+        area_tit=data.get('area_tit'),
+        day=data.get('day'),
+        month=data.get('month'),
+        year=data.get('year'),
+        init_date=data.get('init_date'),
+        end_date=data.get('end_date'),
+        songs=[]  # Empty list to start with
+    )
+
+    for x in data:
+        songs = Song(
+            title=data.get('titleSong'),
+            author=data.get('authorSong'),
+            subtitle=data.get('subtitleSong'),
+            orchestra=data.get('orchestra'),
+            times=data.get('timesSong')
+        )
+        act.add_song(songs)
+    
     try:
-    #    print("avonxd2", file=sys.stderr)
-    #    return send_file("fillpdf.py", attachment_filename='ohhey.pdf')
+   
         return send_file('in/Programa2.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
     except Exception as e:
-           print("avon2", file=sys.stderr)    
-    #cursor = db_connection.cursor()
-    # Perform database operations using the cursor
-    #return "<p>puta</p>"
-    #return jsonify({"message": "Data processed successfully"})
-    #with open('in/Programa2.pdf', 'rb') as pdf_file:
-      #  pdf_data = pdf_file.read()
-    #print("avonxd2", file=sys.stderr)
-    #response = Response(pdf_data, content_type='application/pdf')
-    #response.headers['Content-Disposition'] = 'attachment; filename=example.pdf'
-    #return response
-
+           print("liada", file=sys.stderr)    
+   
+#@app.route("/api/auto", methods=['POST'])
+#def proc_data():
+ #    return FileNotFoundError
 
 @app.route("/")
 def hello_world():

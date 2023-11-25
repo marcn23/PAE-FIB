@@ -210,8 +210,9 @@
 			<input type="text" id="data-signatura" name="data-signatura" placeholder="Data signatura">
 		</div>
         
-		<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a>
-        <button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>
+		<!--<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a> -->
+        <!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
+		<button type="submit">Enviar</button>
     </form>
 	<script>
 		document.getElementById('ide').addEventListener('submit', function(event) {
@@ -223,12 +224,21 @@
 			// Make a POST request to the API
 			fetch('/api/base', {
 				method: 'POST',
-				body: formData,
+				body: formData,//JSON.stringify(formData),
+				headers: {
+    				'Content-Type': 'application/x-www-form-urlencoded', //*/'application/json', //depending on your API
+ 				}
 			})
-			.then(response => response.json())
-			.then(data => {
-				// Handle the API response data
-				console.log(data);
+			.then(response => response.blob())  // Convert the response to a Blob
+			.then(blob => {
+				// Create a download link for the PDF
+				var url = window.URL.createObjectURL(blob);
+				var a = document.createElement('a');
+				a.href = url;
+				a.download = 'example.pdf';
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
 			})
 			.catch(error => {
 				console.error('Error:', error);

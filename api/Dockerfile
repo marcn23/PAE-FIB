@@ -7,6 +7,7 @@ RUN pip install xlrd
 RUN pip install xlwt
 RUN pip install xlutils
 RUN pip install flask
+RUN pip install flask-cors
 RUN pip install openpyxl
 RUN pip install mysql-connector-python
 
@@ -14,6 +15,7 @@ WORKDIR /app
 
 COPY main.py main.py
 COPY in/ /app/in 
+COPY classes/ /app/classes
 COPY fillpdf.py /app/fillpdf.py
 COPY fillxlsx.py /app/fillxlsx.py
 COPY fillpdf_program.py /app/fillpdf_program.py

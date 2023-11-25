@@ -1,5 +1,5 @@
-from Act import Act
-from Songs import Song
+from classes.Act import Act
+from classes.Songs import Song
 
 class Organization:
     def __init__(self):
