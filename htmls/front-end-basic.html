@@ -86,13 +86,15 @@
 
 				const label = document.createElement('label');
 				label.textContent = 'Titol:';
+				label.for = 'titol';
 				const input = document.createElement('input');
 				input.type = 'text';
 				input.placeholder = 'Titol';
+				input.id = 'HOLA';
 				div.appendChild(label);
 				div.appendChild(input);
 
-				const label2 = document.createElement('label');
+		/*		const label2 = document.createElement('label');
 				label2.textContent = 'Autor:';
 				label2.classList.add('label-ball');
 				const input2 = document.createElement('input');
@@ -126,7 +128,7 @@
 				input5.type = 'text';
 				input5.placeholder = 'Número de programa';			
 				div.appendChild(label5);
-				div.appendChild(input5);
+				div.appendChild(input5);*/
 
 				const targ = form.querySelectorAll('div')[7];
 				form.insertBefore(div, targ.nextElementSibling);
@@ -243,6 +245,42 @@
 			.catch(error => {
 				console.error('Error:', error);
 			});
+		});
+
+		document.getElementById('myform').addEventListener('submit', function(event) {
+		event.preventDefault(); // Prevent the default form submission
+
+		// Get form data
+		const formData = new FormData(this);
+		
+		// Convert form data to JSON format
+		const jsonData = {};
+		formData.forEach((value, key) => {
+			jsonData[key] = value;
+		});
+		
+		// Send POST request to Python API
+		fetch('', {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(jsonData)
+		})
+		.then(response => {
+			if (!response.ok) {
+			throw new Error('Network response was not ok');
+			}
+			return response.json();
+		})
+		.then(data => {
+			console.log('Success:', data);
+			// Handle success (if needed)
+		})
+		.catch(error => {
+			console.error('Error:', error);
+			// Handle error (if needed)
+		});
 		});
 	</script>
 	
