@@ -82,7 +82,7 @@
 		<script>
 			var sumatorio = 0;
 			function agregarCampo() {
-				sumatorio = sumatorio +1;
+				sumatorio = sumatorio + 1;
 				const form = document.querySelector('form');
 				const div = document.createElement('div');
 	            div.classList.add('form-group');
@@ -93,49 +93,71 @@
 				const input = document.createElement('input');
 				input.type = 'text';
 				input.placeholder = 'Titol';
-				input.id = 'HOLA';
-				input.name = 'caralho'+sumatorio;
+				input.id = 'Titol';
+				input.name = 'Titol'+sumatorio;
 				div.appendChild(label);
 				div.appendChild(input);
 
-		/*		const label2 = document.createElement('label');
+				const div2 = document.createElement('div');
+	            div2.classList.add('form-group');
+				const label2 = document.createElement('label');
 				label2.textContent = 'Autor:';
 				label2.classList.add('label-ball');
 				const input2 = document.createElement('input');
 				input2.type = 'text';
-				input2.placeholder = 'Autor';			
-				div.appendChild(label2);
-				div.appendChild(input2);
+				input2.placeholder = 'Autor';	
+				input2.id = 'Autor';
+				input2.name = 'Autor'+sumatorio;		
+				div2.appendChild(label2);
+				div2.appendChild(input2);
 
+				const div3 = document.createElement('div');
+	            div3.classList.add('form-group');
 				const label3 = document.createElement('label');
 				label3.textContent = 'Vegades tocat:';
 				label3.classList.add('label-ball');
 				const input3 = document.createElement('input');
 				input3.type = 'text';
-				input3.placeholder = 'Vegades tocat';			
-				div.appendChild(label3);
-				div.appendChild(input3);
+				input3.placeholder = 'Vegades tocat';	
+				input3.id = 'Vegades_tocat';
+				input3.name = 'VegadesTocat'+sumatorio;		
+				div3.appendChild(label3);
+				div3.appendChild(input3);
 
+				const div4 = document.createElement('div');
+	            div4.classList.add('form-group');
 				const label4 = document.createElement('label');
 				label4.textContent = 'Dia:';
 				label4.classList.add('label-ball');
 				const input4 = document.createElement('input');
 				input4.type = 'text';
-				input4.placeholder = 'Dia quan es toca';			
-				div.appendChild(label4);
-				div.appendChild(input4);
+				input4.placeholder = 'Dia quan es toca';
+				input3.id = 'Dia_tocat';
+				input3.name = 'DiaTocat'+sumatorio;			
+				div4.appendChild(label4);
+				div4.appendChild(input4);
 
+				const div5 = document.createElement('div');
+	            div5.classList.add('form-group');
 				const label5 = document.createElement('label');
 				label5.textContent = 'Número de programa:';
 				label5.classList.add('label-ball');
 				const input5 = document.createElement('input');
 				input5.type = 'text';
-				input5.placeholder = 'Número de programa';			
-				div.appendChild(label5);
-				div.appendChild(input5);*/
-
+				input5.placeholder = 'Número de programa';	
+				input5.id = 'Num_Programa';
+				input5.name = 'NumeroPrograma'+sumatorio;		
+				div5.appendChild(label5);
+				div5.appendChild(input5);
+				
+				var hrElement = document.createElement('hr');
 				const targ = form.querySelectorAll('div')[7];
+				form.insertBefore(div5, targ.nextElementSibling);
+				form.insertBefore(div4, targ.nextElementSibling);
+				form.insertBefore(div3, targ.nextElementSibling);
+				form.insertBefore(div2, targ.nextElementSibling);
 				form.insertBefore(div, targ.nextElementSibling);
+				form.insertBefore(hrElement,targ.nextElementSibling);
 			}
 		</script>
 
