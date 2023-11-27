@@ -18,8 +18,8 @@ CORS(app)
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
-    data = request.form.to_dict()
-    #data = request.get_json()  
+    #data = request.form.to_dict()
+    data = request.json
     print(data, file=sys.stderr)
     print(data.get('Titol'), file=sys.stderr)
 
