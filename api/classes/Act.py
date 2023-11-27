@@ -45,25 +45,34 @@ class Act:
         self.songs: [Song] = [Song1]
 """
 class Act:
-    def __init__(self, title=None, event_number=None, local_name=None, order_number=None, 
-                 invoice_number=None, city=None, province=None, liq_included=None, 
-                 sheet_number=None, title_number=None, parts=None, area_tit=None, 
-                 day=None, month=None, year=None, init_date=None, end_date=None, songs=None):
+    # def __init__(self, title=None, event_number=None, local_name=None, order_number=None, 
+    #              invoice_number=None, city=None, province=None, liq_included=None, 
+    #              sheet_number=None, title_number=None, parts=None, area_tit=None, 
+    #              day=None, month=None, year=None, init_date=None, end_date=None, songs=None):
+    #     self.title = title
+    #     # self.event_number = event_number
+    #     self.local_name = local_name
+    #     # self.order_number = order_number
+    #     # self.invoice_number = invoice_number
+    #     self.city = city
+    #     self.province = province
+    #     # self.liq_included = liq_included
+    #     # self.sheet_number = sheet_number
+    #     # self.title_number = title_number
+    #     # self.parts = parts
+    #     # self.area_tit = area_tit
+    #     # self.day = day
+    #     # self.month = month
+    #     # self.year = year
+    #     self.init_date = init_date
+    #     self.end_date = end_date
+    #     self.songs = songs if songs else []
+
+    def __init__(self, title=None, local_name=None, city=None, province=None, init_date=None, end_date=None, songs=None):
         self.title = title
-        self.event_number = event_number
         self.local_name = local_name
-        self.order_number = order_number
-        self.invoice_number = invoice_number
         self.city = city
         self.province = province
-        self.liq_included = liq_included
-        self.sheet_number = sheet_number
-        self.title_number = title_number
-        self.parts = parts
-        self.area_tit = area_tit
-        self.day = day
-        self.month = month
-        self.year = year
         self.init_date = init_date
         self.end_date = end_date
         self.songs = songs if songs else []
