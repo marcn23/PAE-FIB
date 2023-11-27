@@ -44,10 +44,10 @@ CREATE TABLE events (
 
 CREATE TABLE ballades (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titol VARCHAR(255) PRIMARY KEY,
-    autor VARCHAR(128) PRIMARY KEY,
+    titol VARCHAR(255) NOT NULL,
+    autor VARCHAR(128) NOT NULL,
     subtitol VARCHAR(255) DEFAULT "",
-    cobla VARCHAR(255) PRIMARY KEY,
+    cobla VARCHAR(255) NOT NULL,
     vegades INT(10) DEFAULT 0,
     CONSTRAINT atributs_identificatius UNIQUE (titol, autor, cobla)
 );
