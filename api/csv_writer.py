@@ -1,4 +1,5 @@
-import string
+import os
+import csv
 import pandas as pd
 from classes.objectInstances import Objects
 from classes.Organization import Organization
@@ -71,13 +72,59 @@ class CSVWriter:
 
     # One for each team, registering a file
     def collect_Autoliquidation_data(self):
-        #TODO
-        return False
+        # program = Objects().get_Autoliquidacio()
+        # D1
+        # FullN1
+        # D2
+        # FullN2
+        # D3
+        # FullN3
+        # D4
+        # FullN4
+        # D5
+        # FullN5
+        # D6
+        # FullN6
+        # D7
+        # FullN7
+        # D8
+        # FullN8
+        # D9
+        # FullN9
+        # D10
+        # FullN10
+        # NIF
+        # Agrupacio
+        # Adreça
+        # Població
+        # CodiPostal
+        # Telf
+        # Lloc
+        return 
     
     # One for all team, registering one entry
-    def collect_XLSX_data(self):
-        #TODO
-        return False
+    def collect_XLSX_data(self, Organization: Organization):
+        program = Objects().get_XLSX()
+
+        with open(os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','XLSX',str(Organization.name) +'_XLSXinput.csv')), 'w', newline='') as csvfile:
+            fieldnames = ['H. PROGRAMA', 'NOM ORQUESTRA O COBLA', 'DATA INICI', 'DATA FI', 'POBLACIÓ', 'PROVÍNCIA',
+                        'LOCAL /CARRER/ESPAI', 'ESDEVENIMENT', 'NOM ENTITAT AUTOLIQUIDACIÓ']
+
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+
+            for i in range(len(Organization.acts)):
+                program['H. PROGRAMA'] = str("---")
+                program['NOM ORQUESTRA O COBLA'] = Organization.name
+                program['DATA INICI'] = Organization.acts[i].init_date
+                program['DATA FI'] = Organization.acts[i].end_date
+                program['POBLACIÓ'] = Organization.acts[i].city
+                program['PROVÍNCIA'] = Organization.acts[i].province
+                program['LOCAL /CARRER/ESPAI'] = Organization.acts[i].local_name
+                program['ESDEVENIMENT'] = Organization.acts[i].title
+                program['NOM ENTITAT AUTOLIQUIDACIÓ'] = Organization.acts[i].title
+
+                writer.writerow(program)
 
     def write_to_csv(self, file_path):
         df = pd.DataFrame(self.data_list)

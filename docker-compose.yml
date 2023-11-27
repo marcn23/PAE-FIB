@@ -24,6 +24,7 @@ services:
   api:
     build: api/.
     volumes:
+      - ./api/in:/app/in
       - ./api/out:/app/out
     ports:
       - "5000:5000"

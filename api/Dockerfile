@@ -24,10 +24,10 @@ COPY csv_writer.py /app/csv_writer.py
 
 VOLUME ["/app/in", "/app/out"]
 
-# EXPOSE 5000
-# ENV FLASK_APP=main.py
-# CMD ["flask", "run", "--host", "0.0.0.0"]
+EXPOSE 5000
+ENV FLASK_APP=main.py
+CMD ["flask", "run", "--host", "0.0.0.0"]
 # CMD ["python3", "tests.py"] 
-CMD ["python3", "fillpdf_program.py"]
+# CMD ["python3", "fillpdf_program.py"]
 # CMD ["python3", "fillpdf.py"]
 #  CMD ["python3", "fillxlsx.py"]

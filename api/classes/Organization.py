@@ -24,8 +24,8 @@ class Organization:
         self.final_date : string = ""
         self.representator_dni : string = ""
 
-    def __init__(self,acts: Act,number=None,name=None,orchestra=None,place=None,order_place=None,city=None,province=None,representator_name=None,direction=None,postal_code=None,mail=None,mobile=None,sgae_code=None,initial_date=None,final_date=None,representator_dni=None):
-        self.acts = [acts] 
+    def __init__(self,acts: [Act],number=None,name=None,orchestra=None,place=None,order_place=None,city=None,province=None,representator_name=None,direction=None,postal_code=None,mail=None,mobile=None,sgae_code=None,initial_date=None,final_date=None,representator_dni=None):
+        self.acts = acts 
         self.number = number 
         self.name = name 
         self.orchestra = orchestra 
