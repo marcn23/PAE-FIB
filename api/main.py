@@ -9,20 +9,46 @@ import sys
 app = Flask(__name__)
 CORS(app)
 
-#db_connection = mysql.connector.connect(
-#    host="db",  # This should match the service name in your Docker Compose file
-#    user="root",
-#    password="patata",
-#    database="granier",
-#)
+
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
+    db_connection = mysql.connector.connect(
+    host="db",  # This should match the service name in your Docker Compose file
+    user="root",
+    password="patata",
+    database="granier",
+)
+    cursor = db_connection.cursor()
     #data = request.form.to_dict()
     data = request.json
     print(data, file=sys.stderr)
     print(data.get('Titol'), file=sys.stderr)
+    sql = "INSERT INTO ballades (titol, autor, cobla) VALUES (%s,%s,%s)"
+    values = (data.get('Titol'),"autoridad","coblestone")
 
+    cursor.execute(sql, values)
+    #cursor.execute("SHOW TABLES")
+
+# Fetch all the tables
+    tables = cursor.fetchall()
+
+# Print the list of tables
+    for table in tables:
+        print(table[0],file=sys.stderr)
+    cursor.execute("SELECT * FROM ballades")
+    result = cursor.fetchall()
+    print(result,file=sys.stderr)
+    
+    #db_connection.commit()
+    cursor.close()
+    db_connection.close()
+    try:
+   
+        return send_file('in/Programa2.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
+    except Exception as e:
+           print("liada", file=sys.stderr)    
+"""
     act = Act(
         title=data.get('titleAct'),
         event_number=data.get('event_number'),
@@ -53,12 +79,8 @@ def proc_data():
             times=data.get('timesSong')
         )
         act.add_song(songs)
-    
-    try:
+    """
    
-        return send_file('in/Programa2.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
-    except Exception as e:
-           print("liada", file=sys.stderr)    
    
 #@app.route("/api/auto", methods=['POST'])
 #def proc_data():
