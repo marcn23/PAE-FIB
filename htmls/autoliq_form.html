@@ -37,77 +37,87 @@
             align-items: center;
             margin-bottom: 10px;
 		}
+		.sepinput {
+			margin-left:10px;
+		}
     </style>
+		        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-    <form class="myform">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <form class="myform" id="ide">
         <center><h1>FORMULARI PER EMPLENAR LA AUTOLIQUIDACIO</h1></center>
 
         <div class="form-group">
 			<label for="data-emplenament">Data emplenament:</label>
-			<input type="text" id="data-emplenament" name="data-emplenament" placeholder="Data emplenament">
+			<input type="text" class="sepinput" id="data-emplenament" name="data-emplenament" placeholder="Data emplenament">
 		</div>
 
         <h2>Audicions i/o ballades</h2>
 		<div class="form-group">
 			<label for="Dies-audicions">Dies audicions:</label>
-			<input type="text" id="Dies" name="Dies" placeholder="Dies d'audicions i/o ballades (15/04/2023, 12/05/2023, ...)">
+			<input type="text" class="sepinput" id="Dies" name="Dies" placeholder="Dies d'audicions i/o ballades (15/04/2023, 12/05/2023, ...)">
 		</div>
         <div class="form-group">
 			<label for="Nombre-audicions">Dies:</label>
-			<input type="text" id="Nombre-audicions" name="Nombre-audicions" placeholder="Nombre d'audicions i/o ballades realitzades">
+			<input type="text" class="sepinput" id="Nombre-audicions" name="Nombre-audicions" placeholder="Nombre d'audicions i/o ballades realitzades">
 		</div>
         <div class="form-group">
 			<label for="Tarifa">Tarifa:</label>
-			<input type="text" id="tarifa" name="tarifa" placeholder="tarifa">
+			<input type="text" class="sepinput" id="tarifa" name="tarifa" placeholder="tarifa">
 		</div>
 
         <h2>Concursos de sardanes</h2>
         <div class="form-group">
 			<label for="Dies-concursos">Dies concursos:</label>
-			<input type="text" id="Dies-concursos" name="Dies-concursos" placeholder="Dies concursos">
+			<input type="text" class="sepinput" id="Dies-concursos" name="Dies-concursos" placeholder="Dies concursos">
 		</div>
         <div class="form-group">
 			<label for="Nombre-cobles">Nombre cobles:</label>
-			<input type="text" id="Nombre-cobles" name="Nombre-cobles" placeholder="Nombre cobles">
+			<input type="text" class="sepinput" id="Nombre-cobles" name="Nombre-cobles" placeholder="Nombre cobles">
 		</div>
         <div class="form-group">
 			<label for="Preu">Preu::</label>
-			<input type="text" id="Preu" name="Preu" placeholder="Preu">
+			<input type="text" class="sepinput" id="Preu" name="Preu" placeholder="Preu">
 		</div>
 
         <h2>Aplecs i/o concerts</h2>
         <div class="form-group">
 			<label for="Dies-aplecs">Dies aplecs:</label>
-			<input type="text" id="Dies-aplecs" name="Dies-aplecs" placeholder="Dies aplecs">
+			<input type="text" class="sepinput" id="Dies-aplecs" name="Dies-aplecs" placeholder="Dies aplecs">
 		</div>
         <div class="form-group">
 			<label for="Gratuit">Si es gratuit:</label>
-			<input type="text" id="Gratuit" name="Gratuit" placeholder="Gratuit">
-            <input type="text" id="preu-Gratuit" name="preu-Gratuit" placeholder="Preu (€)">
+			<input type="text" class="sepinput" id="Gratuit" name="Gratuit" placeholder="Gratuit">
+            <input type="text" class="sepinput" id="preu-Gratuit" name="preu-Gratuit" placeholder="Preu (€)">
 		</div>
         <div class="form-group">
 			<label for="Recaptacio">Si n'hi ha recaptació::</label>
-			<input type="text" id="recaptacio" name="recaptacio" placeholder="recaptació">
-            <input type="text" id="preu-Recap" name="preu-Recap" placeholder="Preu (€)">
+			<input type="text" class="sepinput" id="recaptacio" name="recaptacio" placeholder="recaptació">
+            <input type="text" class="sepinput" id="preu-Recap" name="preu-Recap" placeholder="Preu (€)">
 		</div>
         <div class="form-group">
 			<label for="baseimposable">Base imposable:</label>
-			<input type="text" id="baseimposable" name= "baseimposable" placeholder="Preu (€)">
+			<input type="text" class="sepinput" id="baseimposable" name= "baseimposable" placeholder="Preu (€)">
 		</div>
         <div class="form-group">
 			<label for="iva">IVA:</label>
-			<input type="text" id="iva-percent" name= "iva-percent" placeholder="Percentatge (%)">
-            <input type="text" id="iva-preu" name= "iva-preu" placeholder="Preu (€)">
+			<input type="text" class="sepinput" id="iva-percent" name= "iva-percent" placeholder="Percentatge (%)">
+            <input type="text" class="sepinput" id="iva-preu" name= "iva-preu" placeholder="Preu (€)">
 		</div>
         <div class="form-group">
 			<label for="total-pagar">Total a pagar:</label>
-			<input type="text" id="total-pagar" name= "total-pagar" placeholder="Preu (€)">
+			<input type="text" class="sepinput" id="total-pagar" name= "total-pagar" placeholder="Preu (€)">
 		</div>
 
 		<button type="button" onclick="agregarCampo()">Afegir relació de fulls de progrma</button>
 		<script>
+			var sumatorio = 0;
 			function agregarCampo() {
+				sumatorio = sumatorio + 1;
 				const form = document.querySelector('form');
 				const div = document.createElement('div');
 	            div.classList.add('form-group');
@@ -117,6 +127,9 @@
 				const input = document.createElement('input');
 				input.type = 'text';
 				input.placeholder = 'Dia';
+				input.id = 'dia';
+				input.name= 'dia'+sumatorio;
+				input.classList.add('sepinput');
 				div.appendChild(label);
 				div.appendChild(input);
 
@@ -125,7 +138,10 @@
 				label2.classList.add('label-ball');
 				const input2 = document.createElement('input');
 				input2.type = 'text';
-				input2.placeholder = 'Número de full';			
+				input2.placeholder = 'Número de full';	
+				input2.id = 'numfull';
+				input2.name= 'numfull'+sumatorio;
+				input2.classList.add('sepinput');		
 				div.appendChild(label2);
 				div.appendChild(input2);
 
@@ -138,69 +154,106 @@
 		<h2>Declarant</h2>
 		<div class="form-group">
 			<label for="NIF-declarant">NIF:</label>
-			<input type="text" id="NIF-declarant" name="NIF-declarant" placeholder="NIF del declarant">
+			<input type="text" id="NIF-declarant" class="sepinput" name="NIF-declarant" placeholder="NIF del declarant">
 		</div>
 		<div class="form-group">
 			<label for="Ag-sard-declarant">Agrupació Sardanista:</label>
-			<input type="text" id="Ag-sard-declarant" name="Ag-sard-declarant" placeholder="Agrupació sardanista del declarant">
+			<input type="text" id="Ag-sard-declarant" class="sepinput" name="Ag-sard-declarant" placeholder="Agrupació sardanista del declarant">
 		</div>
         <div class="form-group">
 			<label for="Adresa-declarant">Adreça:</label>
-			<input type="text" id="Adresa-declarant" name="Adresa-declarant" placeholder="Adreça">
+			<input type="text" id="Adresa-declarant" class="sepinput" name="Adresa-declarant" placeholder="Adreça">
 		</div>
 		<div class="form-group">
 			<label for="CP-declarant">Codi postal:</label>
-			<input type="text" id="CP-declarant" name="CP-declarant" placeholder="Codi postal del declarant">
+			<input type="text" id="CP-declarant" class="sepinput" name="CP-declarant" placeholder="Codi postal del declarant">
 		</div>
 		<div class="form-group">
 			<label for="Poblacio-declarant">Població:</label>
-			<input type="text" id="Poblacio-declarant" name="Poblacio-declarant" placeholder="Poblacio del declarant">
+			<input type="text" id="Poblacio-declarant" class="sepinput" name="Poblacio-declarant" placeholder="Poblacio del declarant">
 		</div>
 		<div class="form-group">
 			<label for="Telefon-declarant">Teléfon:</label>
-			<input type="text" id="Telefon-declarant" name="Telefon-declarant" placeholder="Teléfon del declarant">
+			<input type="text" id="Telefon-declarant" class="sepinput" name="Telefon-declarant" placeholder="Teléfon del declarant">
 		</div>
 
 
 		<h2>Dades bancaries</h2>
 		<div class="form-group">
 			<label for="titular-compte">Titular compte:</label>
-			<input type="text" id="titular-compte" name="titular-compte" placeholder="Titular del compte">
+			<input type="text" id="titular-compte" class="sepinput" name="titular-compte" placeholder="Titular del compte">
 		</div>
 		<div class="form-group">
 			<label for="entitat-compte">Entitat compte:</label>
-			<input type="text" id="titular-compte" name="titular-compte" placeholder="Titular del compte">
+			<input type="text" id="titular-compte" class="sepinput" name="titular-compte" placeholder="Titular del compte">
 		</div>
 		<div class="form-group">
 			<label for="sucursal-compte">Sucursal:</label>
-			<input type="text" id="sucursal-compte" name="sucursal-compte" placeholder="Sucursal del compte">
+			<input type="text" id="sucursal-compte" class="sepinput" name="sucursal-compte" placeholder="Sucursal del compte">
 		</div>
 		<div class="form-group">
 			<label for="provincia-compte">Provincia:</label>
-			<input type="text" id="provincia-compte" name="provincia-compte" placeholder="Provincia">
+			<input type="text" id="provincia-compte" class="sepinput" name="provincia-compte" placeholder="Provincia">
 		</div>
 		<div class="form-group">
 			<label for="data-pagament">Data pagament:</label>
-			<input type="text" id="data-pagament" name="data-pagament" placeholder="Data del pagament">
+			<input type="text" id="data-pagament" class="sepinput" name="data-pagament" placeholder="Data del pagament">
 		</div>
 		<div class="form-group">
 			<label for="IBAN-compte">IBAN:</label>
-			<input type="text" id="IBAN-compte" name="IBAN-compte" placeholder="ES-- ---- ---- ---- ---- ----">
+			<input type="text" id="IBAN-compte" class="sepinput" name="IBAN-compte" placeholder="ES-- ---- ---- ---- ---- ----">
 		</div>
 
 		<h2>Signatura</h2>
 		<div class="form-group">
 			<label for="lloc-signatura">Lloc signatura:</label>
-			<input type="text" id="lloc-signatura" name="lloc-signatura" placeholder="Lloc signatura">
+			<input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
 		</div>
 		<div class="form-group">
 			<label for="data-signatura">Data signatura:</label>
-			<input type="text" id="data-signatura" name="data-signatura" placeholder="Data signatura">
+			<input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
 		</div>
         
 
         <button type="submit">Enviar</button>
     </form>
+	<script>
+		document.getElementById('ide').addEventListener('submit', function(event) {
+		event.preventDefault(); // Prevent the default form submission
+
+		// Get form data
+		const formData = new FormData(this);
+		
+		// Convert form data to JSON format
+		const jsonData = {};
+		formData.forEach((value, key) => {
+			jsonData[key] = value;
+		});
+		
+		// Send POST request to Python API
+		fetch('/api/base', {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(jsonData)
+		})
+		.then(response => response.blob())  // Convert the response to a Blob
+      .then(blob => {
+        // Create a download link for the PDF
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'example.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+		});
+	</script>
 
 
 
