@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response, send_file
+from flask import Flask, request, jsonify, Response, send_file, render_template
 from flask_cors import CORS
 import mysql.connector
 from classes.Db import Db 
@@ -7,7 +7,7 @@ from classes.Act import Act
 from classes.objectInstances import Objects
 from classes.Organization import Organization
 import sys
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../html')
 CORS(app)
 
 
@@ -89,9 +89,9 @@ def proc_data():
     data = request.json
     result = user_login(data.get('user'),data.get('pass'))
     if result:
-        return FileNotFoundError
+        return render_template('paginaprincipal.html')  # Redirect to the dashboard on successful login
     else:
-        return FileNotFoundError    
+        return render_template('login.html', message='Invalid username or password')   
 
 
 
