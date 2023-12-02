@@ -6,6 +6,7 @@ from classes.Songs import Song
 from classes.Act import Act
 from classes.objectInstances import Objects
 from classes.Organization import Organization
+from classes.Db import DB
 import sys
 app = Flask(__name__, template_folder='../html')
 CORS(app)
@@ -13,12 +14,7 @@ CORS(app)
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
-    db_connection = mysql.connector.connect(
-        host="db",  # This should match the service name in your Docker Compose file
-        user="root",
-        password="patata",
-        database="granier",
-    )
+    db_connection = DB.connect()
     cursor = db_connection.cursor()
     #data = request.form.to_dict()
     data = request.json
@@ -26,7 +22,6 @@ def proc_data():
     print(data.get('Titol'), file=sys.stderr)
     sql = "INSERT INTO ballades (titol, autor, cobla) VALUES (%s,%s,%s)"
     values = (data.get('Titol'),"autoridad","coblestone")
-
     cursor.execute(sql, values)
     #cursor.execute("SHOW TABLES")
 
