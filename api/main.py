@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, Response, send_file
 from flask_cors import CORS
 import mysql.connector
+from classes.Db import Db 
 from classes.Songs import Song
 from classes.Act import Act
 from classes.objectInstances import Objects
@@ -83,9 +84,16 @@ def proc_data():
 #end def proc_data()
 
    
-#@app.route("/api/auto", methods=['POST'])
-#def proc_data():
- #    return FileNotFoundError
+@app.route("/api/login", methods=['POST'])
+def proc_data():
+    data = request.json
+    result = user_login(data.get('user'),data.get('pass'))
+    if result:
+        return FileNotFoundError
+    else:
+        return FileNotFoundError    
+
+
 
 @app.route("/")
 def hello_world():
