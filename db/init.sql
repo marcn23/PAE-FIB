@@ -3,15 +3,14 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password CHAR(128) NOT NULL,
-    correu VARCHAR(100) UNIQUE NOT NULL,
-    nif INT(8) UNIQUE NOT NULL,
-    domicili VARCHAR(255) NOT NULL,
-    domicili_num INT(4) NOT NULL,
-    poblacio VARCHAR(255) NOT NULL,
-    provincia VARCHAR(255) NOT NULL,
-    codi_postal VARCHAR(6) NOT NULL,
-    telefon INT(9) NOT NULL,
-    codi_sgae VARCHAR(10)
+    mail VARCHAR(100) UNIQUE NOT NULL,
+    representator_dni INT(8) UNIQUE NOT NULL,
+    direction VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    province VARCHAR(255) NOT NULL,
+    postal_code VARCHAR(6) NOT NULL,
+    mobile INT(9) NOT NULL,
+    sgae_code VARCHAR(10) UNIQUE NOT NULL
 );
 
 CREATE TABLE events (
