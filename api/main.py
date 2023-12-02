@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, Response, send_file, render_template
 from flask_cors import CORS
 import mysql.connector
-from classes.Db import Db 
 from classes.Songs import Song
 from classes.Act import Act
 from classes.objectInstances import Objects
@@ -15,29 +14,29 @@ CORS(app)
 @app.route("/api/base", methods=['POST'])
 def proc_data():
     db_connection = DB.connect()
-    cursor = db_connection.cursor()
+    #cursor = db_connection.cursor()
     #data = request.form.to_dict()
     data = request.json
-    print(data, file=sys.stderr)
-    print(data.get('Titol'), file=sys.stderr)
-    sql = "INSERT INTO ballades (titol, autor, cobla) VALUES (%s,%s,%s)"
-    values = (data.get('Titol'),"autoridad","coblestone")
-    cursor.execute(sql, values)
+    #print(data, file=sys.stderr)
+    #print(data.get('Titol'), file=sys.stderr)
+    #sql = "INSERT INTO ballades (titol, autor, cobla) VALUES (%s,%s,%s)"
+    #values = (data.get('Titol'),"autoridad","coblestone")
+    #cursor.execute(sql, values)
     #cursor.execute("SHOW TABLES")
 
     # Fetch all the tables
-    tables = cursor.fetchall()
+    #tables = cursor.fetchall()
 
     # Print the list of tables
-    for table in tables:
-        print(table[0],file=sys.stderr)
-    cursor.execute("SELECT * FROM ballades")
-    result = cursor.fetchall()
-    print(result,file=sys.stderr)
+    #for table in tables:
+      #  print(table[0],file=sys.stderr)
+    #cursor.execute("SELECT * FROM ballades")
+    #result = cursor.fetchall()
+    #print(result,file=sys.stderr)
     
     #db_connection.commit()
-    cursor.close()
-    db_connection.close()
+    #cursor.close()
+    #db_connection.close()
 
     try:
         return send_file('in/Programa2.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
@@ -82,7 +81,7 @@ def proc_data():
 @app.route("/api/login", methods=['POST'])
 def proc_data():
     data = request.json
-    result = user_login(data.get('user'),data.get('pass'))
+    result = DB.user_login(data.get('user'),data.get('pass'))
     if result:
         return render_template('paginaprincipal.html')  # Redirect to the dashboard on successful login
     else:

@@ -43,6 +43,6 @@ class DB:
         return result[0]
     
     def add_event():
-        
+        return 
         
         
