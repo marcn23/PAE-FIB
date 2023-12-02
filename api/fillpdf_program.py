@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import sys
 from PyPDF2 import PdfMerger, PdfWriter, PdfReader
 from PyPDF2.generic import BooleanObject, NameObject, IndirectObject
 
@@ -19,16 +20,17 @@ def set_need_appearances_writer(writer: PdfWriter):
         return writer
 
 if __name__ == '__main__':
-    pdf_filename = "Programa2.pdf"
-    csv_filename = "output.csv"
+    org = sys.argv[1]
+    csv_filename = str(org) + ".csv"
+    pdf_filename = "Programs_Template.pdf"
     
     pdfin = os.path.normpath(os.path.join(os.getcwd(),'in',pdf_filename))
-    pdfout = os.path.normpath(os.path.join(os.getcwd(),'out'))
+    pdfout = os.path.normpath(os.path.join(os.getcwd(),'out','Programs'))
     if not os.path.exists(pdfout):
         # If it doesn't exist, create the directory and any intermediate directories
         os.makedirs(pdfout)
 
-    csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
+    csvin = os.path.normpath(os.path.join(os.getcwd(),'in', 'CSVs', 'Programs', csv_filename))
     
     data = pd.read_csv(csvin)
 
@@ -77,7 +79,7 @@ if __name__ == '__main__':
             else:
                 print("Not valid")
 
-        temp_out_dir = os.path.normpath(os.path.join(pdfout,str(rows['Orquesta o cobla']) + '_Programa.pdf'))
+        temp_out_dir = os.path.normpath(os.path.join(pdfout,org + '.pdf'))
         pdf2.add_page(pdf.pages[0])
         pdf2.add_page(pdf.pages[1])
         pdf2.update_page_form_field_values(pdf2.pages[0], field_dictionary_1)

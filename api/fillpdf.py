@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import sys
 from PyPDF2 import PdfMerger, PdfReader, PdfWriter, PdfReader
 from PyPDF2.generic import BooleanObject, NameObject, IndirectObject
 
@@ -19,16 +20,17 @@ def set_need_appearances_writer(writer: PdfWriter):
         return writer
 
 if __name__ == '__main__':
-    pdf_filename = "SGAE_Autoliquidacio.pdf"
-    csv_filename = "InfoAutoliquidacio.csv"
+    org = sys.argv[1]
+    csv_filename = str(org) + ".csv"
+    pdf_filename = "SGAE_Autoliquidation_Template.pdf"
     
     pdfin = os.path.normpath(os.path.join(os.getcwd(),'in',pdf_filename))
-    pdfout = os.path.normpath(os.path.join(os.getcwd(),'out'))
+    pdfout = os.path.normpath(os.path.join(os.getcwd(),'out', 'Autoliquidations'))
     if not os.path.exists(pdfout):
         # If it doesn't exist, create the directory and any intermediate directories
         os.makedirs(pdfout)
 
-    csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
+    csvin = os.path.normpath(os.path.join(os.getcwd(),'in',"CSVs","Autoliquidations",csv_filename))
     
     data = pd.read_csv(csvin)
 
@@ -48,50 +50,19 @@ if __name__ == '__main__':
                 {NameObject("/NeedAppearances"): BooleanObject(True)})
         
         # Key = pdf_field_name : Value = csv_field_value
-        field_dictionary_1 = {
-        # "Audicions i/o ballades: Dies": rows['DiesAudicio'],
-        # "Audicions i/o ballades a": rows['PreuAudicio'],
-        "Audicions i/o ballades a: €:": rows['PreuAudicio'],
-        "Nombre de cobles: €": str("?"),
-        "Concursos de sardanes: Dies": rows['DiesConcurs'],
-        "Nombre de cobles": rows['NombreDeCobles'],
-        "Si és gratuit:": rows['RecaptacioConcert'],
-        "Aplecs i/o concerts: Dies": rows['DiesConcert'],
-        "Si és gratuit: €": "?",
-        # "Si hi ha recaptació: 10% s/taquilla": str("?"),
-        "Si hi ha recaptació: 10% s/taquilla: €": str("?"),
-        "Base imposable: €": str("?"),
-        "TOTAL A PAGAR: €": str("?"),
-        "nombre": rows['DiesAudicio'],
-        "Dia-1:": rows['D1'],
-        "Full núm-1:": rows['FullN1'],
-        "Dia-2:": rows['D2'],
-        "Full núm-2:": rows['FullN2'],
-        "Dia-3:": rows['D3'],
-        "Full núm-3:": rows['FullN3'],
-        "Dia-4:": rows['D4'],
-        "Full núm-4:": rows['FullN4'],
-        "Dia-5:": rows['D5'],
-        "Full núm-5:": rows['FullN5'],
-        "Dia-6:": rows['D6'],
-        "Full núm-6:": rows['FullN6'],
-        "Dia-7:": rows['D7'],
-        "Full núm-7:": rows['FullN7'],
-        "Dia-8:": rows['D8'],
-        "Full núm-8:": rows['FullN8'],
-        "Dia-9:": rows['D9'],
-        "Full núm-9:": rows['FullN9'],
-        "Dia-10:": rows['D10'],
-        "Full núm-10:": rows['FullN10'],
-        "NIF:": rows['NIF'],
-        "Agrupació sardanista:": rows['Agrupacio'],
-        "Adreça:": rows['Adreça'],
-        "Polbació:": rows['Població'],
-        "Codi Postal:": rows['CodiPostal'],
-        "Telèfon:": rows['Telf'],
-        "A:": rows['Lloc'] }
+        field_dictionary_1 = {}
+        data = ["Audicions i/o ballades a: €:","Concursos de sardanes: Dies","Nombre de cobles","Si és gratuit:","Aplecs i/o concerts: Dies","nombre","Dia-1:","Full núm-1:","Dia-2:","Full núm-2:","Dia-3:","Full núm-3:","Dia-4:","Full núm-4:","Dia-5:","Full núm-5:","Dia-6:","Full núm-6:","Dia-7:","Full núm-7:","Dia-8:","Full núm-8:","Dia-9:","Full núm-9:","Dia-10:","Full núm-10:","NIF:","Agrupació sardanista:","Adreça:","Polbació:","Codi Postal:","Telèfon:","A:"]
+        keys = ["DiesAudicio","PreuAudicio","DiesConcurs","NombreDeCobles","DiesConcert","RecaptacioConcert","D1","FullN1","D2","FullN2","D3","FullN3","D4","FullN4","D5","FullN5","D6","FullN6","D7","FullN7","D8","FullN8","D9","FullN9","D10","FullN10","NIF","Agrupacio","Adreça","Població","CodiPostal","Telf","Lloc"]
+        print("other: " + str(len(data)))
+        print("Keys: " + str(len(keys)))
+        for key in range(len(keys)):
+            print("Keys value" + str(keys[key]) + ": " + str(rows[keys[key]]))
+            if rows[keys[key]] != "---":
+                field_dictionary_1[data[key]] = rows[keys[key]]
+            else:
+                print("Not valid")
 
-        temp_out_dir = os.path.normpath(os.path.join(pdfout,str(rows['Agrupacio']) + '_Autoliquidacio.pdf'))
+        temp_out_dir = os.path.normpath(os.path.join(pdfout,str(org) + '_Autoliquidacio.pdf'))
         pdf2.add_page(pdf.pages[0])
         pdf2.update_page_form_field_values(pdf2.pages[0], field_dictionary_1)
         outputStream = open(temp_out_dir, "wb")

@@ -1,22 +1,23 @@
 import os
 import pandas as pd
+import sys
 from xlutils.copy import copy
 import openpyxl
 
-                                
-csv_filename = "InfoXlsx.csv"
+
+org = sys.argv[1]
+csv_filename = str(org) + ".csv"
     
-csvin = os.path.normpath(os.path.join(os.getcwd(),'in',csv_filename))
+csvin = os.path.normpath(os.path.join(os.getcwd(),'in', 'CSVs', 'XLSX', csv_filename))
     
 data = pd.read_csv(csvin)
 
 xlsxin = os.path.normpath(os.path.join(os.getcwd(),'in',"SGAE_ResumAutoliquidacions.xlsx"))
-xlsxout = os.path.normpath(os.path.join(os.getcwd(),'out',"SGAE_ResumAutoliquidacions.xlsx"))
+xlsxout = os.path.normpath(os.path.join(os.getcwd(),'out','XLSX',"SGAE_ResumAutoliquidacions.xlsx"))
 
 xfile = openpyxl.load_workbook(xlsxin)
 
 sheet = xfile["Autoliquidacions"]
-
 
 i=4; 
 for j, rows in data.iterrows():
@@ -36,7 +37,3 @@ for j, rows in data.iterrows():
     i+=1
 
 xfile.save(xlsxout)
-# write_book.save("New/File/Path") #Save the newly written copy. Enter the same as the old path to write over
-# Finally, close the Excel file
-# via the close() method.
-# workbook.close()
