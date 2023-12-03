@@ -50,7 +50,7 @@ body {
     }
 
     .login-form{
-        margin-top: 80%;
+        margin-top: 40%;
     }
 
     .register-form{
@@ -69,7 +69,7 @@ body {
 }
 
 .login-main-text h2{
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .btn-black{

@@ -16,13 +16,17 @@
         <div class="sidenav">
                 <div class="login-main-text">
                     <img src="sardanuista.png" alt="Description of the image" width="460" height="165">
-                    <h2 class="h2log">Inici sessió</h2>
+                    <h2 class="h2log">Registre</h2>
                 </div>
             </div>
             <div class="main">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 col-sm-3">
                     <div class="login-form">
                     <form>
+                        <div class="form-group">
+                            <label>Nom i cognoms</label>
+                            <input type="text" class="form-control" placeholder="Nom i cognoms" name="name">
+                        </div>
                         <div class="form-group">
                             <label>Correu electrònic</label>
                             <input type="text" class="form-control" placeholder="exemple@test.com" name="user">
@@ -31,8 +35,20 @@
                             <label>Contrassenya</label>
                             <input type="password" class="form-control" placeholder="Contrassenya" name="pass">
                         </div>
-                        <a href="paginaprincipal.html"><button type="submit" class="btn btn-black">Entra</button></a>
-                        <a href="registre.html"><button type="submit" class="btn btn-secondary">Registra't</button></a>
+                        <div class="form-group">
+                            <label>Confirmar contrassenya</label>
+                            <input type="password" class="form-control" placeholder="Contrassenya" name="pass-confirm">
+                        </div>
+                        <div class="form-group">
+                            <label>Codi postal</label>
+                            <input type="text" class="form-control" placeholder="CP" name="cp">
+                        </div>
+                        <div class="form-group">
+                            <label>Agrupació on treballa</label>
+                            <input type="text" class="form-control" placeholder="Agrupació" name="agrupacio-usuari">
+                        </div>
+                        <a href="login.html"><button type="submit" class="btn btn-black">Registra</button></a>
+                        <a href="login.html"><button type="submit" class="btn btn-secondary">Enrere</button></a>
                     </form>
                     </div>
                 </div>
