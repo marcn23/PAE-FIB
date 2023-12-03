@@ -41,20 +41,20 @@ CREATE TABLE events (
     font1_direccio VARCHAR(255)
 );
 
-CREATE TABLE ballades (
+CREATE TABLE songs (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titol VARCHAR(255) NOT NULL,
-    autor VARCHAR(128) NOT NULL,
-    subtitol VARCHAR(255) DEFAULT "",
-    cobla VARCHAR(255) NOT NULL,
-    vegades INT(10) DEFAULT 0,
-    CONSTRAINT atributs_identificatius UNIQUE (titol, autor, cobla)
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(128) NOT NULL,
+    subtitle VARCHAR(255) DEFAULT "",
+    orchestra VARCHAR(255) NOT NULL,
+    times INT(10) DEFAULT 0,
+    CONSTRAINT id_attibutes UNIQUE (title, author, orchestra)
 );
 
 CREATE TABLE events_ballades (
-    id_relacio INT AUTO_INCREMENT PRIMARY KEY,
-    id_acte INT NOT NULL,
-    id_ballada INT NOT NULL,
-    FOREIGN KEY (id_acte) REFERENCES events(id),
-    FOREIGN KEY (id_ballada) REFERENCES ballades(id)
+    id_relation INT AUTO_INCREMENT PRIMARY KEY,
+    id_act INT NOT NULL,
+    id_song INT NOT NULL,
+    FOREIGN KEY (id_act) REFERENCES events(id),
+    FOREIGN KEY (id_song) REFERENCES songs(id)
 );
