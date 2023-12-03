@@ -21,4 +21,7 @@ class Autoliquidation:
         self.num_couplets = num_couplets
         self.concert_days = concert_days
         self.concert_earnings = concert_earnings
-        self.acts : [Act] = array_of_acts
+        self.acts : [Act] = array_of_acts if array_of_acts else []
+    
+    def add_act(self, act):
+        self.acts.append(act)

@@ -44,4 +44,7 @@ class Organization:
         self.initial_date = initial_date 
         self.final_date = final_date 
         self.representator_dni = representator_dni 
+    
+    def add_act(self, act):
+        self.acts.append(act)
 

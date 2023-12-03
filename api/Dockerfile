@@ -10,6 +10,8 @@ RUN pip install flask
 RUN pip install flask-cors
 RUN pip install openpyxl
 RUN pip install mysql-connector-python
+RUN pip install Flask Flask-Session
+
 
 WORKDIR /app
 
