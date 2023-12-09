@@ -62,12 +62,16 @@
 			<input type="text" class="sepinput" id="Dies" name="Dies" placeholder="Dies d'audicions i/o ballades (15/04/2023, 12/05/2023, ...)">
 		</div>
         <div class="form-group">
-			<label for="Nombre-audicions">Dies:</label>
+			<label for="Nombre-audicions">Nombre de dies dies:</label>
 			<input type="text" class="sepinput" id="Nombre-audicions" name="Nombre-audicions" placeholder="Nombre d'audicions i/o ballades realitzades">
 		</div>
         <div class="form-group">
 			<label for="Tarifa">Tarifa:</label>
-			<input type="text" class="sepinput" id="tarifa" name="tarifa" placeholder="tarifa">
+			<input type="text" class="sepinput" id="tarifa" name="tarifa" placeholder="Tarifa">
+		</div>
+		<div class="form-group">
+			<label for="PreuTotalAudicions">Preu total:</label>
+			<input type="text" class="sepinput" id="PreuTotalAudicions" name="PreuTotalAudicions" placeholder="Preu total">
 		</div>
 
         <h2>Concursos de sardanes</h2>
@@ -80,7 +84,7 @@
 			<input type="text" class="sepinput" id="Nombre-cobles" name="Nombre-cobles" placeholder="Nombre cobles">
 		</div>
         <div class="form-group">
-			<label for="Preu">Preu::</label>
+			<label for="Preu">Preu:</label>
 			<input type="text" class="sepinput" id="Preu" name="Preu" placeholder="Preu">
 		</div>
 
@@ -95,7 +99,7 @@
             <input type="text" class="sepinput" id="preu-Gratuit" name="preu-Gratuit" placeholder="Preu (€)">
 		</div>
         <div class="form-group">
-			<label for="Recaptacio">Si n'hi ha recaptació::</label>
+			<label for="Recaptacio">Si n'hi ha recaptació:</label>
 			<input type="text" class="sepinput" id="recaptacio" name="recaptacio" placeholder="recaptació">
             <input type="text" class="sepinput" id="preu-Recap" name="preu-Recap" placeholder="Preu (€)">
 		</div>
@@ -145,7 +149,7 @@
 				div.appendChild(label2);
 				div.appendChild(input2);
 
-				const targ = form.querySelectorAll('div')[12];
+				const targ = form.querySelectorAll('div')[13];
 				form.insertBefore(div, targ.nextElementSibling);
 			}
 		</script>

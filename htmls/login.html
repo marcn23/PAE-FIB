@@ -22,7 +22,7 @@
             <div class="main">
                 <div class="col-md-6 col-sm-12">
                     <div class="login-form">
-                    <form>
+                    <form id="ide">
                         <div class="form-group">
                             <label>Correu electrònic</label>
                             <input type="text" class="form-control" placeholder="exemple@test.com" name="user">
@@ -32,8 +32,36 @@
                             <input type="password" class="form-control" placeholder="Contrassenya" name="pass">
                         </div>
                         <a href="paginaprincipal.html"><button type="submit" class="btn btn-black">Entra</button></a>
-                        <a href="registre.html"><button type="submit" class="btn btn-secondary">Registra't</button></a>
-                    </form>
+                    </form>                    
+                    <script>
+                        document.getElementById('ide').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Prevent the default form submission
+                
+                        // Get form data
+                        const formData = new FormData(this);
+                        
+                        // Convert form data to JSON format
+                        const jsonData = {};
+                        formData.forEach((value, key) => {
+                            jsonData[key] = value;
+                        });
+                        
+                        // Send POST request to Python API
+                        fetch('/api/login', {
+                            method: 'POST',
+                            headers: {
+                            'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(jsonData)
+                        })
+                        .then(response => response.blob())  // Convert the response to a Blob
+                        .catch(error => {
+                        console.error('Error:', error);
+                        });
+                        });
+                    </script>
+
+                    <a href="registre.html"><button type="submit" class="btn btn-secondary">Registra't</button></a>
                     </div>
                 </div>
         </div>
