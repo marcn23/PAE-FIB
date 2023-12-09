@@ -53,7 +53,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <form id="ide">
-        <center><h1>FORMULARI BÁSIC</h1></center>
+        <center><h1>FORMULARI BÀSIC</h1></center>
 
 		<h2>Espectacle</h2>
 		<div class="form-group">
@@ -80,15 +80,52 @@
 			<label for="Poblacio">Població:</label>
         	<input type="text" id="Poblacio" class="sepinput" name="Poblacio" placeholder="Poblacio on es fa l'acte">
 		</div>
+
+
+		<h2>Declarant</h2>
 		<div class="form-group">
-			<label for="Data-inici">Data inici acte:</label>
-        	<input type="text" id="Data-inici" class="sepinput" name="Data-inici" placeholder="Data inici de l'acte">
+			<label for="Nom-declarant">Nom declarant:</label>
+			<input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
 		</div>
 		<div class="form-group">
-			<label for="Data-fi">Data fi acte:</label>
-        	<input type="text" id="Data-fi" class="sepinput" name="Data-fi" placeholder="Data fi de l'acte">
+			<label for="direccio-declarant">Direcció:</label>
+			<input type="text" id="direccio-declarant" class="sepinput" name="direccio-declarant" placeholder="Direcció del declarant">
 		</div>
-		
+		<div class="form-group">
+			<label for="CP-declarant">Codi postal:</label>
+			<input type="text" id="CP-declarant" class="sepinput" name="CP-declarant" placeholder="Codi postal del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Poblacio-declarant">Població:</label>
+			<input type="text" id="Poblacio-declarant" class="sepinput" name="Poblacio-declarant" placeholder="Poblacio del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Provincia-declarant">Provincia:</label>
+			<input type="text" id="Provincia-declarant" class="sepinput" name="Provincia-declarant" placeholder="Provincia del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Correu-declarant">Correu electrònic:</label>
+			<input type="text" id="Correu-declarant" class="sepinput" name="Correu-declarant" placeholder="Correu del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Telefon-declarant">Teléfon:</label>
+			<input type="text" id="Telefon-declarant" class="sepinput" name="Telefon-declarant" placeholder="Teléfon del declarant">
+		</div>
+		<div class="form-group">
+			<label for="Codigo-Socio-declarant">Codi soci SGAE:</label>
+			<input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
+		</div>
+
+		<h2>Signatura</h2>
+		<div class="form-group">
+			<label for="lloc-signatura">Lloc signatura:</label>
+			<input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
+		</div>
+		<div class="form-group">
+			<label for="data-signatura">Data signatura:</label>
+			<input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
+		</div>
+
 
 		<button type="button" onclick="agregarCampo()">Agregar ballada</button>
 		<script>
@@ -139,7 +176,7 @@
 				div3.appendChild(label3);
 				div3.appendChild(input3);
 
-				const div4 = document.createElement('div');
+				/*const div4 = document.createElement('div');
 	            div4.classList.add('form-group');
 				const label4 = document.createElement('label');
 				label4.textContent = 'Dia:';
@@ -165,95 +202,18 @@
 				input5.name = 'NumeroPrograma'+sumatorio;	
 				input5.classList.add("sepinput");	
 				div5.appendChild(label5);
-				div5.appendChild(input5);
+				div5.appendChild(input5);*/
 				
 				var hrElement = document.createElement('hr');
-				const targ = form.querySelectorAll('div')[7];
-				form.insertBefore(div5, targ.nextElementSibling);
-				form.insertBefore(div4, targ.nextElementSibling);
+				const targ = form.querySelectorAll('div')[15];
+				//form.insertBefore(div5, targ.nextElementSibling);
+				//form.insertBefore(div4, targ.nextElementSibling);
 				form.insertBefore(div3, targ.nextElementSibling);
 				form.insertBefore(div2, targ.nextElementSibling);
 				form.insertBefore(div, targ.nextElementSibling);
 				form.insertBefore(hrElement,targ.nextElementSibling);
 			}
 		</script>
-
-
-		<h2>Declarant</h2>
-		<div class="form-group">
-			<label for="NIF-declarant">NIF:</label>
-			<input type="text" id="NIF-declarant" class="sepinput" name="NIF-declarant" placeholder="NIF del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Nom-declarant">Nom:</label>
-			<input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Ag-sard-declarant">Agrupació Sardanista:</label>
-			<input type="text" id="Ag-sard-declarant" class="sepinput" name="Ag-sard-declarant" placeholder="Agrupació sardanista del declarant">
-		</div>
-		<div class="form-group">
-			<label for="CP-declarant">Codi postal:</label>
-			<input type="text" id="CP-declarant" class="sepinput" name="CP-declarant" placeholder="Codi postal del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Poblacio-declarant">Població:</label>
-			<input type="text" id="Poblacio-declarant" class="sepinput" name="Poblacio-declarant" placeholder="Poblacio del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Provincia-declarant">Provincia:</label>
-			<input type="text" id="Provincia-declarant" class="sepinput" name="Provincia-declarant" placeholder="Provincia del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Correu-declarant">Correu electrònic:</label>
-			<input type="text" id="Correu-declarant" class="sepinput" name="Correu-declarant" placeholder="Correu del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Telefon-declarant">Teléfon:</label>
-			<input type="text" id="Telefon-declarant" class="sepinput" name="Telefon-declarant" placeholder="Teléfon del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Codigo-Socio-declarant">Codi soci SGAE:</label>
-			<input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
-		</div>
-
-		<h2>Dades bancaries</h2>
-		<div class="form-group">
-			<label for="titular-compte">Titular compte:</label>
-			<input type="text" id="titular-compte" class="sepinput" name="titular-compte" placeholder="Titular del compte">
-		</div>
-		<div class="form-group">
-			<label for="entitat-compte">Entitat compte:</label>
-			<input type="text" id="titular-compte" class="sepinput" name="titular-compte" placeholder="Titular del compte">
-		</div>
-		<div class="form-group">
-			<label for="sucursal-compte">Sucursal:</label>
-			<input type="text" id="sucursal-compte" class="sepinput" name="sucursal-compte" placeholder="Sucursal del compte">
-		</div>
-		<div class="form-group">
-			<label for="provincia-compte">Provincia:</label>
-			<input type="text" id="provincia-compte" class="sepinput" name="provincia-compte" placeholder="Provincia">
-		</div>
-		<div class="form-group">
-			<label for="data-pagament">Data pagament:</label>
-			<input type="text" id="data-pagament" class="sepinput" name="data-pagament" placeholder="Data del pagament">
-		</div>
-		<div class="form-group">
-			<label for="IBAN-compte">IBAN:</label>
-			<input type="text" id="IBAN-compte" class="sepinput" name="IBAN-compte" placeholder="ES-- ---- ---- ---- ---- ----">
-		</div>
-
-
-
-		<h2>Signatura</h2>
-		<div class="form-group">
-			<label for="lloc-signatura">Lloc signatura:</label>
-			<input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
-		</div>
-		<div class="form-group">
-			<label for="data-signatura">Data signatura:</label>
-			<input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
-		</div>
         
 		<!--<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a> -->
         <!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
