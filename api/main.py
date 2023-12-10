@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response, send_file, render_template, session, json
+from flask import Flask, request, jsonify, Response, send_file, render_template, session, json, abort
 from flask_cors import CORS
 import mysql.connector
 from classes.Songs import Song
@@ -7,37 +7,43 @@ from classes.objectInstances import Objects
 from classes.Organization import Organization
 from classes.Autoliquidation import Autoliquidation
 from classes.Db import DB
+from csv_writer import CSVWriter
 import sys
+import os
+import time
+import io
+import zipfile
+import subprocess
 from flask_session import Session
 
-app = Flask(__name__, template_folder='../htmls')
+app = Flask(__name__, static_url_path='/htmls', static_folder='/usr/share/nginx/html',template_folder='htmls')
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
-    db_connection = DB.connect()
+    #db_connection = DB.connect()
     data = request.json
     
-    #print(data, file=sys.stderr)
-   
+    print(data, file=sys.stderr)
+   #print(data, file=sys.stderr)
 
     
     act = Act(
         number=data.get('Numero-event'),
         title=data.get('Titol'),
-        local_name=data.get('local_name'),
+        local_name=data.get('Local'),
         city=data.get('Poblacio'),
         province=data.get('Provincia'),
-        init_date=data.get('Data-inici'),
-        end_date=data.get('Data-fi'),
+        init_date=data.get('Data-Inici'),
+        end_date=data.get('Data-Fi'),
         songs=[]  # Empty list to start with
     )
 
-    jsonsongs = json.loads(data)
+    #jsonsongs = json.loads(data)
 
     songs: Song
-    for key, value in jsonsongs.items():
+    for key, value in data.items():
     
         if key.startswith("Titol"):
         
@@ -51,29 +57,32 @@ def proc_data():
                     times=data.get('Vegades'+var_number)
                 )
                 act.add_song(songs)
+    Org = Organization(act)
+    orgpochamataro =  Organization([],"1","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
+    orgpocharipoll =  Organization([],"1","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
+    if data.get('orgui') == 'mataro':
+        Org = orgpochamataro
+    else: 
+        Org = orgpocharipoll
 
-    #aqui trucar a get session + bd pillar datos org i enchufarlos a una org      
-    """
-    csv_writer = CSVWriter()
-    csv_writer.collect_XLSX_data(org)
-    file_path = 'output.csv'
-    csv_writer.write_to_csv(file_path)
-
-
+    Org.add_act(act)    
+    #aqui trucar a get session + bd pillar datos org i enchufarlos a una org
+    #  cs3 = CSVWriter()
     cs3 = CSVWriter()
-    cs3.collect_SGAE_data(org, act)
-    file_path1 = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','Programs',str(org.name) +'.csv'))
-    cs3.write_to_csv(file_path1)
+    cs3.collect_SGAE_data(Org, act)
+    file_path1 = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','Programs',str(Org.name) +'.csv'))
+    cs3.write_to_csv(file_path1)      
 
     time.sleep(2)
+
     try:
-        result = subprocess.run(['python', "fillpdf_program.py", "Testing_Orchestra"])
-        result = subprocess.run(['python', "fillxlsx.py", "Testing_Orchestra"])
+        result = subprocess.run(['python', "fillpdf_program.py", Org.name])
+        #result = subprocess.run(['python', "fillxlsx.py", "Testing_Orchestra"])
     except Exception as e:
         print(f"Error executing the script: {e}")
-    """   
+   
     try:
-        return send_file('in/Programs_Template.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
+        return send_file('out/Programs/'+Org.name+".pdf", mimetype='application/pdf', as_attachment=True, download_name='Programa.pdf')
     except Exception as e:
            print("liada", file=sys.stderr)
            return FileNotFoundError
@@ -81,48 +90,76 @@ def proc_data():
 
 @app.route("/api/auto", methods=['POST'])
 def proc_data5():
-    db_connection = DB.connect()
+    #db_connection = DB.connect()
     data = request.json
     
-    #print(data, file=sys.stderr)
+    print(data, file=sys.stderr)
    
     #accedir bd i pillar actes de org usuario cookie
      
-    """
+    act = Act(
+        number="",
+        title="",
+        local_name="",
+        city="",
+        province="",
+        init_date="",
+        end_date="",
+        songs=[]  # Empty list to start with
+    )
     auto = Autoliquidation(
-        audition_days=data.get('Numero-event'),
-        audition_price=data.get('Titol'),
-        contest_days=data.get('local_name'),
-        contest_price=data.get('Poblacio'),
-        num_couplets=data.get('Provincia'),
-        concert_days=data.get('Data-inici'),
-        concert_earnings=data.get('Data-fi'),
-        acts=[]  # Empty list to start with
+        audition_days=data.get('Dies-audicions'),
+        audition_price=data.get('tarifa'),
+        contest_days=data.get('Dies-concursos'),
+        contest_price=data.get('Preu'),
+        num_couplets=data.get('Nombre-cobles'),
+        concert_days=data.get('Dies-aplecs'),
+        concert_earnings=data.get('total-pagar'),
+        acts=[act]  # Empty list to start with shauria danar a la bd a mirar actes per jorgito puto no curra
     )
 
-
+    Org = Organization([])
+    orgpochamataro =  Organization([],"1","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
+    orgpocharipoll =  Organization([],"1","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
+    if data.get('orgui') == 'mataro':
+        Org = orgpochamataro
+    else: 
+        Org = orgpocharipoll
         
-    
     csv_writer = CSVWriter()
-    csv_writer.collect_XLSX_data(org)
+    csv_writer.collect_XLSX_data(Org)
     file_path = 'output.csv'
     csv_writer.write_to_csv(file_path)
 
-
     cs2 = CSVWriter()
-    cs2.collect_Autoliquidation_data(autoliquidation,org)
-    file_path2 = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','Autoliquidations',str(org.name) +'.csv'))
+    cs2.collect_Autoliquidation_data(auto,Org)
+    file_path2 = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','Autoliquidations',str(Org.name) +'.csv'))
     cs2.write_to_csv(file_path2)
 
     time.sleep(2)
     try:
-        result = subprocess.run(['python', "fillpdf_program.py", "Testing_Orchestra"])
-        result = subprocess.run(['python', "fillxlsx.py", "Testing_Orchestra"])
+        result = subprocess.run(['python', "fillpdf.py", Org.name])
+        result = subprocess.run(['python', "fillxlsx.py", Org.name])
     except Exception as e:
         print(f"Error executing the script: {e}")
-    """   
+   
+
+    folder_path = 'out/Autoliquidations'
+    folder_path2 = 'out/XLSX'
+    # Create a BytesIO object to store the zip file
+    zip_buffer = io.BytesIO()
+
+    # Create a ZipFile object
+    with zipfile.ZipFile(zip_buffer, 'a', zipfile.ZIP_DEFLATED, False) as zip_file:
+        # Add specific files to the zip file
+        zip_file.write(os.path.join(folder_path, Org.name +"_Autoliquidacio"+'.pdf'), Org.name+"_Autoliquidacio"+'.pdf')
+        zip_file.write(os.path.join(folder_path2, "SGAE_ResumAutoliquidacions_" + Org.name +'.xlsx'), "SGAE_ResumAutoliquidacions_"+Org.name+'.xlsx')
+
+    # Set the BytesIO object position to the beginning
+    zip_buffer.seek(0)
+
     try:
-        return send_file('in/Programs_Template.pdf', mimetype='application/pdf', as_attachment=True, download_name='example.pdf')
+        return send_file(zip_buffer, download_name='files.zip', as_attachment=True)
     except Exception as e:
            print("liada", file=sys.stderr)
            return FileNotFoundError   
@@ -130,25 +167,31 @@ def proc_data5():
 
 @app.route("/api/login", methods=['POST'])
 def proc_data3():
-    db_connection = DB.connect()
+    #db_connection = DB.connect()
     data = request.json
-    result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
-    if result:
-
-        return render_template('paginaprincipal.html', usuario_id = data.get('user'))  # Redirect to the dashboard on successful login
-    else:
-        return render_template('login.html', message='Invalid username or password')   
+    #result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
+    if data.get('user') == 'admin':
+        if data.get('pass') == 'admin':
+            return "success"
+        else: abort(403,"access forbidden")
+        #return render_template('paginaprincipal.html')#, usuario_id = data.get('user'))  # Redirect to the dashboard on successful login
+    else: 
+        abort(403,"access forbidden")
+        #return render_template('login.html', message='Invalid username or password')   
 
 @app.route("/api/register", methods=['POST'])
 def proc_data2():
-    db_connection = DB.connect()
+    #db_connection = DB.connect()
     data = request.json
-    result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
-    if result:
+    #result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
+    if data:
         return render_template('paginaprincipal.html')  # Redirect to the dashboard on successful login
     else:
-        return render_template('login.html', message='Invalid username or password')   
+        return render_template('../htmls/login.html', message='Invalid username or password')   
 
+@app.route('/def')
+def usuario_valido():
+    return render_template('paginaprincipal.html')
 
 @app.route("/")
 def hello_world():

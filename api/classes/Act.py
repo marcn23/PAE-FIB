@@ -2,6 +2,16 @@ from classes.Songs import Song
 import string
 
 class Act:
+    def __init__(self):
+        self.number : string= ""
+        self.title :string = ""
+        self.local_name :string = ""
+        self.city :string = ""
+        self.province:string = ""
+        self.init_date:string = ""
+        self.end_date:string = ""
+        self.songs =  []
+
     def __init__(self, number=None, title=None, local_name=None, city=None, province=None, init_date=None, end_date=None, songs=None):
         self.number = number
         self.title = title

@@ -26,6 +26,7 @@ services:
     volumes:
       - ./api/in:/app/in
       - ./api/out:/app/out
+      - ./htmls:/app/htmls
     ports:
       - "5000:5000"
 

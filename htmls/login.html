@@ -54,7 +54,20 @@
                             },
                             body: JSON.stringify(jsonData)
                         })
-                        .then(response => response.blob())  // Convert the response to a Blob
+                        .then(response => {
+                            if (response.status === 403) {
+                    // Handle 403 Forbidden response
+                    document.getElementById('content-container').innerHTML = '<h1>Access Forbidden</h1>';
+                } else if (response.ok) {
+                    // Redirect to paginaprincipal.html
+                    //return fetch('paginaprincipal.html')
+                    window.location.href = 'paginaprincipal.html';
+                } else {
+                    // Handle other errors
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                            //return fetch('paginaprincipal.html')
+                        })  // Convert the response to a Blob
                         .catch(error => {
                         console.error('Error:', error);
                         });

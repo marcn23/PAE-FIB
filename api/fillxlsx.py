@@ -13,7 +13,7 @@ csvin = os.path.normpath(os.path.join(os.getcwd(),'in', 'CSVs', 'XLSX', csv_file
 data = pd.read_csv(csvin)
 
 xlsxin = os.path.normpath(os.path.join(os.getcwd(),'in',"SGAE_ResumAutoliquidacions.xlsx"))
-xlsxout = os.path.normpath(os.path.join(os.getcwd(),'out','XLSX',"SGAE_ResumAutoliquidacions.xlsx"))
+xlsxout = os.path.normpath(os.path.join(os.getcwd(),'out','XLSX',"SGAE_ResumAutoliquidacions_" + org + ".xlsx"))
 
 xfile = openpyxl.load_workbook(xlsxin)
 
