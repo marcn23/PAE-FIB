@@ -10,8 +10,6 @@ class Organization:
         self.orchestra : string = ""
         self.place : string = ""
         self.order_place : string = ""
-        self.city : string = ""
-        self.province : string = ""
         self.representator_name : string = ""
         self.direction : string = ""
         self.postal_code : string = ""
@@ -31,8 +29,6 @@ class Organization:
         self.orchestra = orchestra 
         self.place = place 
         self.order_place = order_place 
-        self.city = city 
-        self.province = province 
         self.representator_name = representator_name 
         self.direction = direction 
         self.postal_code = postal_code 
