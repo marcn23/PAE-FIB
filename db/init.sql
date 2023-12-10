@@ -1,10 +1,12 @@
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(128) UNIQUE NOT NULL
     username VARCHAR(50) UNIQUE NOT NULL,
     password CHAR(128) NOT NULL,
     mail VARCHAR(100) UNIQUE NOT NULL,
     representator_dni INT(8) UNIQUE NOT NULL,
+    representator_name VARCHAR(128) NOT NULL,
     direction VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
     province VARCHAR(255) NOT NULL,
@@ -13,7 +15,7 @@ CREATE TABLE users (
     sgae_code VARCHAR(10) UNIQUE NOT NULL
 );
 
-CREATE TABLE events (
+CREATE TABLE acts (
     id INT(10) NOT NULL PRIMARY KEY,
     tipus VARCHAR(255),
     data DATE NOT NULL,
@@ -31,7 +33,7 @@ CREATE TABLE events (
     cobla2 VARCHAR(255),
     cobla3 VARCHAR(255),
     canvis VARCHAR(255),
-    IDEN INT(10) NOT NULL,
+    IDEN INT(10) UNIQUE NOT NULL,
     link_programa VARCHAR(1024),
     autor VARCHAR(255) NOT NULL,
     data_creacio TIMESTAMP NOT NULL,
@@ -51,7 +53,7 @@ CREATE TABLE songs (
     CONSTRAINT id_attibutes UNIQUE (title, author, orchestra)
 );
 
-CREATE TABLE events_ballades (
+CREATE TABLE acts_songs (
     id_relation INT AUTO_INCREMENT PRIMARY KEY,
     id_act INT NOT NULL,
     id_song INT NOT NULL,

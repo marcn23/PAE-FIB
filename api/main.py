@@ -6,7 +6,7 @@ from classes.Act import Act
 from classes.objectInstances import Objects
 from classes.Organization import Organization
 from classes.Autoliquidation import Autoliquidation
-from classes.Db import DB
+from classes.Db import DB_conn
 from csv_writer import CSVWriter
 import sys
 import os
@@ -22,12 +22,11 @@ Session(app)
 
 @app.route("/api/base", methods=['POST'])
 def proc_data():
-    #db_connection = DB.connect()
+    # db_connection = DB_conn()
+    # db_connection.connect()
     data = request.json
-    
     print(data, file=sys.stderr)
-   #print(data, file=sys.stderr)
-
+    # print(data, file=sys.stderr)
     
     act = Act(
         number=data.get('Numero-event'),
@@ -40,8 +39,8 @@ def proc_data():
         songs=[]  # Empty list to start with
     )
 
-    #jsonsongs = json.loads(data)
-
+    # jsonsongs = json.loads(data)
+    
     songs: Song
     for key, value in data.items():
     
@@ -77,7 +76,7 @@ def proc_data():
 
     try:
         result = subprocess.run(['python', "fillpdf_program.py", Org.name])
-        #result = subprocess.run(['python', "fillxlsx.py", "Testing_Orchestra"])
+        # result = subprocess.run(['python', "fillxlsx.py", "Testing_Orchestra"])
     except Exception as e:
         print(f"Error executing the script: {e}")
    
@@ -90,12 +89,13 @@ def proc_data():
 
 @app.route("/api/auto", methods=['POST'])
 def proc_data5():
-    #db_connection = DB.connect()
+    # db_connection = DB_conn()
+    # db_connection.connect()
     data = request.json
     
     print(data, file=sys.stderr)
    
-    #accedir bd i pillar actes de org usuario cookie
+    # accedir bd i pillar actes de org usuario cookie
      
     act = Act(
         number="",
@@ -167,9 +167,11 @@ def proc_data5():
 
 @app.route("/api/login", methods=['POST'])
 def proc_data3():
-    #db_connection = DB.connect()
+    db_connection = DB_conn()
+    db_connection.connect()
     data = request.json
-    #result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
+    # result = db_connection.user_login(data.get('user'),data.get('pass'))
+    db_connection.desconnect()
     if data.get('user') == 'admin':
         if data.get('pass') == 'admin':
             return "success"
@@ -181,9 +183,11 @@ def proc_data3():
 
 @app.route("/api/register", methods=['POST'])
 def proc_data2():
-    #db_connection = DB.connect()
+    db_connection = DB_conn()
+    db_connection.connect()
     data = request.json
-    #result = DB.user_login(db_connection,data.get('user'),data.get('pass'))
+    #result = DB_conn.user_login(data.get('user'),data.get('pass'))
+    db_connection.desconnect()
     if data:
         return render_template('paginaprincipal.html')  # Redirect to the dashboard on successful login
     else:
@@ -200,8 +204,6 @@ def hello_world():
 @app.route("/testing")
 def test():
     return "<p>This is a not test</p>"
-
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
