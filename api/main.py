@@ -57,8 +57,8 @@ def proc_data():
                 )
                 act.add_song(songs)
     Org = Organization(act)
-    orgpochamataro =  Organization([],"1","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
-    orgpocharipoll =  Organization([],"1","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
+    orgpochamataro =  Organization([],"253053","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
+    orgpocharipoll =  Organization([],"253053","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
     if data.get('orgui') == 'mataro':
         Org = orgpochamataro
     else: 
@@ -97,16 +97,12 @@ def proc_data5():
    
     # accedir bd i pillar actes de org usuario cookie
      
-    act = Act(
-        number="",
-        title="",
-        local_name="",
-        city="",
-        province="",
-        init_date="",
-        end_date="",
-        songs=[]  # Empty list to start with
-    )
+    song1 = Song("the second", "idk", "subtit", "testing","34")
+    song2 = Song("the first", "author1", "Subtit", "Testing", "30")
+    act = Act("1","Testing", "Test_name", "Barcelona", "Barcelona", "26/11/2023", "30/11/2023", [song1,song2])
+    song3 = Song("the second", "idk", "subtit", "testing","34")
+    song4 = Song("the first", "author1", "Subtit", "Testing", "30")
+    act2 = Act("253053","Testing2", "Test_name", "Barcelona", "Barcelona", "28/11/2023", "30/11/2023", [song3,song4])
     auto = Autoliquidation(
         audition_days=data.get('Dies-audicions'),
         audition_price=data.get('tarifa'),
@@ -115,12 +111,12 @@ def proc_data5():
         num_couplets=data.get('Nombre-cobles'),
         concert_days=data.get('Dies-aplecs'),
         concert_earnings=data.get('total-pagar'),
-        acts=[act]  # Empty list to start with shauria danar a la bd a mirar actes per jorgito puto no curra
+        acts=[act,act2]  # Empty list to start with shauria danar a la bd a mirar actes per jorgito puto no curra
     )
 
     Org = Organization([])
-    orgpochamataro =  Organization([],"1","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
-    orgpocharipoll =  Organization([],"1","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
+    orgpochamataro =  Organization([act,act2],"1","SardanaMat","Orq Mataro","Ripoll","Mataro","Mataro","Barcelona","Alfonso","Crrer de Mataro","34080","mat@mail.com","6543490","2344535","23/11/2023","30/11/2023","67438787E")
+    orgpocharipoll =  Organization([act,act2],"1","SardanaRip","Orq Ripoll","Ripoll","Ripoll","Ripoll","Barcelona","Maria","Crrer de Ripoll","34980","rip@mail.com","6543490","2344535","23/11/2023","30/11/2023","29436584T")
     if data.get('orgui') == 'mataro':
         Org = orgpochamataro
     else: 

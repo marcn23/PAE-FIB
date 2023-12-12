@@ -1,7 +1,7 @@
 
-CREATE TABLE users (
+/*CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(128) UNIQUE NOT NULL
+    name VARCHAR(128) UNIQUE NOT NULL,
     username VARCHAR(50) UNIQUE NOT NULL,
     password CHAR(128) NOT NULL,
     mail VARCHAR(100) UNIQUE NOT NULL,
@@ -59,4 +59,4 @@ CREATE TABLE acts_songs (
     id_song INT NOT NULL,
     FOREIGN KEY (id_act) REFERENCES events(id),
     FOREIGN KEY (id_song) REFERENCES songs(id)
-);
+);*/

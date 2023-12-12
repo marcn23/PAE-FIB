@@ -98,7 +98,7 @@
 			<input type="text" id="Data-Fi" class="sepinput" name="Data-Fi" placeholder="Data Fi">
 		</div>
 		
-		<h2>Declarant</h2>
+		<h2>Organització</h2>
 		<div class="form-group">
 			<label for="Nom-declarant">Nom declarant:</label>
 			<input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
@@ -132,7 +132,7 @@
 			<input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
 		</div>
 
-		<h2>Signatura</h2>
+		<!--<h2>Signatura</h2>
 		<div class="form-group">
 			<label for="lloc-signatura">Lloc signatura:</label>
 			<input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
@@ -140,10 +140,29 @@
 		<div class="form-group">
 			<label for="data-signatura">Data signatura:</label>
 			<input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
-		</div>
+		</div>-->
+		<style>
+			/* Estilos para el botón "Agregar ballada" */
+			button.agregar {
+				background-color: #4CAF50; /* Color de fondo verde */
+				color: white; /* Color del texto blanco */
+				border: 1px solid #4CAF50; /* Borde verde */
+				padding: 10px 20px; /* Espaciado interno */
+				cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+			}
+		
+			/* Estilos para el botón "Descarregar Programa" */
+			button.descargar {
+        background-color: #008CBA; /* Color de fondo azul */
+        color: white; /* Color del texto blanco */
+        border: 1px solid #008CBA; /* Borde azul */
+        padding: 10px 20px; /* Espaciado interno */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        margin-top: 10px; /* Margen superior de 10px */
+    }
+		</style>
 
-
-		<button type="button" onclick="agregarCampo()">Agregar ballada</button>
+		<button  type="button" onclick="agregarCampo()">Agregar sardana</button>
 		<script>
 			var sumatorio = 0;
 			function agregarCampo() {
@@ -221,7 +240,7 @@
 				div5.appendChild(input5);
 				
 				var hrElement = document.createElement('hr');
-				const targ = form.querySelectorAll('div')[15];
+				const targ = form.querySelectorAll('div')[14];
 				form.insertBefore(div5, targ.nextElementSibling);
 				form.insertBefore(div4, targ.nextElementSibling);
 				form.insertBefore(div3, targ.nextElementSibling);
@@ -232,8 +251,8 @@
 		</script>
         
 		<!--<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a> -->
-        <!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
-		<button type="submit">Descarregar Programa</button>
+        <div><button class="descargar" type="submit">Descarregar Programa</button></div><!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
+		
     </form>
 	<script>
 		document.getElementById('ide').addEventListener('submit', function(event) {

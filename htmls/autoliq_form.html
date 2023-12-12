@@ -130,6 +130,26 @@
 			<input type="text" class="sepinput" id="total-pagar" name= "total-pagar" placeholder="Preu (€)">
 		</div>
 
+		<style>
+			/* Estilos para el botón "Agregar ballada" */
+			button.agregar {
+				background-color: #4CAF50; /* Color de fondo verde */
+				color: white; /* Color del texto blanco */
+				border: 1px solid #4CAF50; /* Borde verde */
+				padding: 10px 20px; /* Espaciado interno */
+				cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+			}
+		
+			/* Estilos para el botón "Descarregar Programa" */
+			button.descargar {
+        background-color: #008CBA; /* Color de fondo azul */
+        color: white; /* Color del texto blanco */
+        border: 1px solid #008CBA; /* Borde azul */
+        padding: 10px 20px; /* Espaciado interno */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        margin-top: 10px; /* Margen superior de 10px */
+    }
+		</style>
 		<!--<button type="button" onclick="agregarCampo()">Afegir relació de fulls de progrma</button>
 		<script>
 			var sumatorio = 0;
@@ -232,7 +252,7 @@
 		</div>-->
         
 
-        <button type="submit">Enviar</button>
+        <button class="descargar" type="submit">Enviar</button>
     </form>
 	<script>
 		document.getElementById('ide').addEventListener('submit', function(event) {
