@@ -16,10 +16,19 @@ body {
     overflow-x: hidden;
     padding-top: 20px;
 }
+.sidenat {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
 
 
 .main {
     padding: 0px 10px;
+}
+.maintest {
+    padding: 0px 500px;
 }
 
 @media screen and (max-height: 450px) {
@@ -38,6 +47,9 @@ body {
 
 @media screen and (min-width: 768px){
     .main{
+        margin-left: 40%; 
+    }
+    .maintest{
         margin-left: 40%; 
     }
 
@@ -64,6 +76,11 @@ body {
 
 .login-main-text{
     margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+.login-main-text-pp{
+    margin-top: 32%;
     padding: 60px;
     color: #fff;
 }
