@@ -3,294 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <title>Programa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-			background-color: black;
+            background-color: #f8f9fa;
+            padding-top: 50px;
         }
         form {
-            width: 1200px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-			background-color: rgb(195, 195, 195);
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
         }
         label {
-            display: block;
-            margin-bottom: 10px;
+            font-weight: bold;
         }
-		.label-ball {
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .sepinput {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button.descargar {
             display: block;
-            margin-bottom: 10px;
-			margin-left: 3px;
-       }
-		input {
-			display: block;
-			margin-left: 10px;
-			margin-bottom: 10px;
-			flex-grow: 1;
-		}
-		.form-group {
-			display: flex;
-            flex-direction: row; /* Cambiamos la dirección a horizontal (fila) */
-            align-items: center;
-            margin-bottom: 10px;
-		}
-		.sepinput {
-			margin-left:10px;
-		}
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button.descargar:hover {
+            background-color: #0056b3;
+        }
+        hr {
+            margin-top: 20px;
+        }
     </style>
-	        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <form id="ide">
         <center><h1>PROGRAMA</h1></center>
-		<hr>
-		<label> Si ja has omplert aquest formulari amb anterioritat, pots seleccionar la teva organització al següent desplegable i donar-li a enviar.</label>
-		<br>
-		<label for="opciones">Selecciona una opció</label>
-		<select id="orgseleccionada" name="orgui" >
-			<option value="opcion0">--</option>
+        <hr>
+        <!-- Resto de los campos del formulario -->
+    <div class="form-group">
+        <label for="Numero-event">Numero programa:</label>
+        <input type="text" id="Numero-event" class="sepinput" name="Numero-event" placeholder="Numero programa">
+    </div>
+    <h2>Espectacle</h2>
+    <div class="form-group">
+        <label for="Titol">Títol:</label>
+        <input type="text" id="Titol" class="sepinput" name="Titol" placeholder="Titol del espectacle">
+    </div>
+    
+    <div class="form-group">
+        <label for="Local">Local:</label>
+        <input type="text" id="Local" class="sepinput" name="Local" placeholder="Local on es fa l'acte">
+    </div>
+    <!--<div class="form-group">
+        <label for="Domicili">Domicili:</label>
+        <input type="text" id="Domicili" class="sepinput" name="Domicili" placeholder="Domicili on es fa l'acte">
+    </div>-->
+    <div class="form-group">
+        <label for="Provincia">Provincia:</label>
+        <input type="text" id="Provincia" class="sepinput" name="Provincia" placeholder="Provincia on es fa l'acte">
+    </div>
+    <div class="form-group">
+        <label for="Poblacio">Població:</label>
+        <input type="text" id="Poblacio" class="sepinput" name="Poblacio" placeholder="Poblacio on es fa l'acte">
+    </div>
+    <div class="form-group">
+        <label for="Data-Inici">Data Inici:</label>
+        <input type="text" id="Data-Inici" class="sepinput" name="Data-Inici" placeholder="Data Inici">
+    </div>
+    <div class="form-group">
+        <label for="Data-Fi">Data Fi:</label>
+        <input type="text" id="Data-Fi" class="sepinput" name="Data-Fi" placeholder="Data Fi">
+    </div>
+    
+    <h2>Organització</h2>
+    <div class="form-group">
+        <label for="Nom-declarant">Nom declarant:</label>
+        <input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
+    </div>
+    <div class="form-group">
+        <label for="direccio-declarant">Direcció:</label>
+        <input type="text" id="direccio-declarant" class="sepinput" name="direccio-declarant" placeholder="Direcció del declarant">
+    </div>
+    <div class="form-group">
+        <label for="CP-declarant">Codi postal:</label>
+        <input type="text" id="CP-declarant" class="sepinput" name="CP-declarant" placeholder="Codi postal del declarant">
+    </div>
+    <div class="form-group">
+        <label for="Poblacio-declarant">Població:</label>
+        <input type="text" id="Poblacio-declarant" class="sepinput" name="Poblacio-declarant" placeholder="Poblacio del declarant">
+    </div>
+    <div class="form-group">
+        <label for="Provincia-declarant">Provincia:</label>
+        <input type="text" id="Provincia-declarant" class="sepinput" name="Provincia-declarant" placeholder="Provincia del declarant">
+    </div>
+    <div class="form-group">
+        <label for="Correu-declarant">Correu electrònic:</label>
+        <input type="text" id="Correu-declarant" class="sepinput" name="Correu-declarant" placeholder="Correu del declarant">
+    </div>
+    <div class="form-group">
+        <label for="Telefon-declarant">Teléfon:</label>
+        <input type="text" id="Telefon-declarant" class="sepinput" name="Telefon-declarant" placeholder="Teléfon del declarant">
+    </div>
+    <div class="form-group">
+        <label for="Codigo-Socio-declarant">Codi soci SGAE:</label>
+        <input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
+    </div>
 
-		  <option value="mataro">Agrupació Sardanista de Mataró</option>
-		  <option value="ripoll">Agrupació Sardanista de Ripoll</option>
-		</select>
-<hr>
-		<div class="form-group">
-			<label for="Numero-event">Numero programa:</label>
-        	<input type="text" id="Numero-event" class="sepinput" name="Numero-event" placeholder="Numero programa">
-		</div>
-		<h2>Espectacle</h2>
-		<div class="form-group">
-			<label for="Titol">Títol:</label>
-			<input type="text" id="Titol" class="sepinput" name="Titol" placeholder="Titol del espectacle">
-		</div>
-		
-		<div class="form-group">
-			<label for="Local">Local:</label>
-        	<input type="text" id="Local" class="sepinput" name="Local" placeholder="Local on es fa l'acte">
-		</div>
-		<!--<div class="form-group">
-			<label for="Domicili">Domicili:</label>
-        	<input type="text" id="Domicili" class="sepinput" name="Domicili" placeholder="Domicili on es fa l'acte">
-		</div>-->
-		<div class="form-group">
-			<label for="Provincia">Provincia:</label>
-        	<input type="text" id="Provincia" class="sepinput" name="Provincia" placeholder="Provincia on es fa l'acte">
-		</div>
-		<div class="form-group">
-			<label for="Poblacio">Població:</label>
-        	<input type="text" id="Poblacio" class="sepinput" name="Poblacio" placeholder="Poblacio on es fa l'acte">
-		</div>
-		<div class="form-group">
-			<label for="Data-Inici">Data Inici:</label>
-			<input type="text" id="Data-Inici" class="sepinput" name="Data-Inici" placeholder="Data Inici">
-		</div>
-		<div class="form-group">
-			<label for="Data-Fi">Data Fi:</label>
-			<input type="text" id="Data-Fi" class="sepinput" name="Data-Fi" placeholder="Data Fi">
-		</div>
-		
-		<h2>Organització</h2>
-		<div class="form-group">
-			<label for="Nom-declarant">Nom declarant:</label>
-			<input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
-		</div>
-		<div class="form-group">
-			<label for="direccio-declarant">Direcció:</label>
-			<input type="text" id="direccio-declarant" class="sepinput" name="direccio-declarant" placeholder="Direcció del declarant">
-		</div>
-		<div class="form-group">
-			<label for="CP-declarant">Codi postal:</label>
-			<input type="text" id="CP-declarant" class="sepinput" name="CP-declarant" placeholder="Codi postal del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Poblacio-declarant">Població:</label>
-			<input type="text" id="Poblacio-declarant" class="sepinput" name="Poblacio-declarant" placeholder="Poblacio del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Provincia-declarant">Provincia:</label>
-			<input type="text" id="Provincia-declarant" class="sepinput" name="Provincia-declarant" placeholder="Provincia del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Correu-declarant">Correu electrònic:</label>
-			<input type="text" id="Correu-declarant" class="sepinput" name="Correu-declarant" placeholder="Correu del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Telefon-declarant">Teléfon:</label>
-			<input type="text" id="Telefon-declarant" class="sepinput" name="Telefon-declarant" placeholder="Teléfon del declarant">
-		</div>
-		<div class="form-group">
-			<label for="Codigo-Socio-declarant">Codi soci SGAE:</label>
-			<input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
-		</div>
+    <!--<h2>Signatura</h2>
+    <div class="form-group">
+        <label for="lloc-signatura">Lloc signatura:</label>
+        <input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
+    </div>
+    <div class="form-group">
+        <label for="data-signatura">Data signatura:</label>
+        <input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
+    </div>-->
+    <style>
+        /* Estilos para el botón "Agregar ballada" */
+        button.agregar {
+            background-color: #4CAF50; /* Color de fondo verde */
+            color: white; /* Color del texto blanco */
+            border: 1px solid #4CAF50; /* Borde verde */
+            padding: 10px 20px; /* Espaciado interno */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        }
+    
+        /* Estilos para el botón "Descarregar Programa" */
+        button.descargar {
+    background-color: #008CBA; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    border: 1px solid #008CBA; /* Borde azul */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin-top: 10px; /* Margen superior de 10px */
+}
+    </style>
 
-		<!--<h2>Signatura</h2>
-		<div class="form-group">
-			<label for="lloc-signatura">Lloc signatura:</label>
-			<input type="text" id="lloc-signatura" class="sepinput" name="lloc-signatura" placeholder="Lloc signatura">
-		</div>
-		<div class="form-group">
-			<label for="data-signatura">Data signatura:</label>
-			<input type="text" id="data-signatura" class="sepinput" name="data-signatura" placeholder="Data signatura">
-		</div>-->
-		<style>
-			/* Estilos para el botón "Agregar ballada" */
-			button.agregar {
-				background-color: #4CAF50; /* Color de fondo verde */
-				color: white; /* Color del texto blanco */
-				border: 1px solid #4CAF50; /* Borde verde */
-				padding: 10px 20px; /* Espaciado interno */
-				cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-			}
-		
-			/* Estilos para el botón "Descarregar Programa" */
-			button.descargar {
-        background-color: #008CBA; /* Color de fondo azul */
-        color: white; /* Color del texto blanco */
-        border: 1px solid #008CBA; /* Borde azul */
-        padding: 10px 20px; /* Espaciado interno */
-        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-        margin-top: 10px; /* Margen superior de 10px */
-    }
-		</style>
+    <button  type="button" onclick="agregarCampo()">Agregar sardana</button>
+    <script>
+        var sumatorio = 0;
+        function agregarCampo() {
+            sumatorio = sumatorio + 1;
+            const form = document.querySelector('form');
+            const div = document.createElement('div');
+            div.classList.add('form-group');
 
-		<button  type="button" onclick="agregarCampo()">Agregar sardana</button>
-		<script>
-			var sumatorio = 0;
-			function agregarCampo() {
-				sumatorio = sumatorio + 1;
-				const form = document.querySelector('form');
-				const div = document.createElement('div');
-	            div.classList.add('form-group');
+            const label = document.createElement('label');
+            label.textContent = 'Titol:';
+            label.for = 'titol';
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = 'Titol';
+            input.id = 'Titol'+ sumatorio;
+            input.name = 'Titol'+sumatorio;
+            input.classList.add("sepinput");
+            div.appendChild(label);
+            div.appendChild(input);
 
-				const label = document.createElement('label');
-				label.textContent = 'Titol:';
-				label.for = 'titol';
-				const input = document.createElement('input');
-				input.type = 'text';
-				input.placeholder = 'Titol';
-				input.id = 'Titol'+ sumatorio;
-				input.name = 'Titol'+sumatorio;
-				input.classList.add("sepinput");
-				div.appendChild(label);
-				div.appendChild(input);
+            const div2 = document.createElement('div');
+            div2.classList.add('form-group');
+            const label2 = document.createElement('label');
+            label2.textContent = 'Autor:';
+            label2.classList.add('label-ball');
+            const input2 = document.createElement('input');
+            input2.type = 'text';
+            input2.placeholder = 'Autor';	
+            input2.id = 'Autor' +sumatorio;
+            input2.name = 'Autor'+sumatorio;	
+            input2.classList.add("sepinput");	
+            div2.appendChild(label2);
+            div2.appendChild(input2);
 
-				const div2 = document.createElement('div');
-	            div2.classList.add('form-group');
-				const label2 = document.createElement('label');
-				label2.textContent = 'Autor:';
-				label2.classList.add('label-ball');
-				const input2 = document.createElement('input');
-				input2.type = 'text';
-				input2.placeholder = 'Autor';	
-				input2.id = 'Autor' +sumatorio;
-				input2.name = 'Autor'+sumatorio;	
-				input2.classList.add("sepinput");	
-				div2.appendChild(label2);
-				div2.appendChild(input2);
+            const div3 = document.createElement('div');
+            div3.classList.add('form-group');
+            const label3 = document.createElement('label');
+            label3.textContent = 'Vegades tocat:';
+            label3.classList.add('label-ball');
+            const input3 = document.createElement('input');
+            input3.type = 'text';
+            input3.placeholder = 'Vegades tocat';	
+            input3.id = 'Vegades'+sumatorio;
+            input3.name = 'Vegades'+sumatorio;	
+            input3.classList.add("sepinput");	
+            div3.appendChild(label3);
+            div3.appendChild(input3);
 
-				const div3 = document.createElement('div');
-	            div3.classList.add('form-group');
-				const label3 = document.createElement('label');
-				label3.textContent = 'Vegades tocat:';
-				label3.classList.add('label-ball');
-				const input3 = document.createElement('input');
-				input3.type = 'text';
-				input3.placeholder = 'Vegades tocat';	
-				input3.id = 'Vegades'+sumatorio;
-				input3.name = 'Vegades'+sumatorio;	
-				input3.classList.add("sepinput");	
-				div3.appendChild(label3);
-				div3.appendChild(input3);
+            const div4 = document.createElement('div');
+            div4.classList.add('form-group');
+            const label4 = document.createElement('label');
+            label4.textContent = 'Subtítol:';
+            label4.classList.add('label-ball');
+            const input4 = document.createElement('input');
+            input4.type = 'text';
+            input4.placeholder = 'Subtítol';
+            input4.id = 'Subtitol'+sumatorio;
+            input4.name = 'Subtitol'+sumatorio;	
+            input4.classList.add("sepinput");		
+            div4.appendChild(label4);
+            div4.appendChild(input4);
 
-				const div4 = document.createElement('div');
-	            div4.classList.add('form-group');
-				const label4 = document.createElement('label');
-				label4.textContent = 'Subtítol:';
-				label4.classList.add('label-ball');
-				const input4 = document.createElement('input');
-				input4.type = 'text';
-				input4.placeholder = 'Subtítol';
-				input4.id = 'Subtitol'+sumatorio;
-				input4.name = 'Subtitol'+sumatorio;	
-				input4.classList.add("sepinput");		
-				div4.appendChild(label4);
-				div4.appendChild(input4);
+            const div5 = document.createElement('div');
+            div5.classList.add('form-group');
+            const label5 = document.createElement('label');
+            label5.textContent = 'Orquestra:';
+            label5.classList.add('label-ball');
+            const input5 = document.createElement('input');
+            input5.type = 'text';
+            input5.placeholder = 'Orquestra';	
+            input5.id = 'Orquestra'+sumatorio;
+            input5.name = 'Orquestra'+sumatorio;	
+            input5.classList.add("sepinput");	
+            div5.appendChild(label5);
+            div5.appendChild(input5);
+            
+            var hrElement = document.createElement('hr');
+            const targ = form.querySelectorAll('div')[14];
+            form.insertBefore(div5, targ.nextElementSibling);
+            form.insertBefore(div4, targ.nextElementSibling);
+            form.insertBefore(div3, targ.nextElementSibling);
+            form.insertBefore(div2, targ.nextElementSibling);
+            form.insertBefore(div, targ.nextElementSibling);
+            form.insertBefore(hrElement,targ.nextElementSibling);
+        }
+    </script>
+    
+    <!--<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a> -->
+    <div><button class="descargar" type="submit">Descarregar Programa</button></div><!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
+    
+</form>
+<script>
+    document.getElementById('ide').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-				const div5 = document.createElement('div');
-	            div5.classList.add('form-group');
-				const label5 = document.createElement('label');
-				label5.textContent = 'Orquestra:';
-				label5.classList.add('label-ball');
-				const input5 = document.createElement('input');
-				input5.type = 'text';
-				input5.placeholder = 'Orquestra';	
-				input5.id = 'Orquestra'+sumatorio;
-				input5.name = 'Orquestra'+sumatorio;	
-				input5.classList.add("sepinput");	
-				div5.appendChild(label5);
-				div5.appendChild(input5);
-				
-				var hrElement = document.createElement('hr');
-				const targ = form.querySelectorAll('div')[14];
-				form.insertBefore(div5, targ.nextElementSibling);
-				form.insertBefore(div4, targ.nextElementSibling);
-				form.insertBefore(div3, targ.nextElementSibling);
-				form.insertBefore(div2, targ.nextElementSibling);
-				form.insertBefore(div, targ.nextElementSibling);
-				form.insertBefore(hrElement,targ.nextElementSibling);
-			}
-		</script>
-        
-		<!--<a href="Programa2.pdf" download="aaaa.pdf">Descargar arch</a> -->
-        <div><button class="descargar" type="submit">Descarregar Programa</button></div><!--<button type="submit" href="Programa2.pdf" download="aaaa.pdf">Enviar</button>-->
-		
-    </form>
-	<script>
-		document.getElementById('ide').addEventListener('submit', function(event) {
-		event.preventDefault(); // Prevent the default form submission
+    // Get form data
+    const formData = new FormData(this);
+    
+    // Convert form data to JSON format
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+    
+    // Send POST request to Python API
+    fetch('/api/base', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(response => response.blob())  // Convert the response to a Blob
+  .then(blob => {
+    // Create a download link for the PDF
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'Programa.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+    });
+</script>
+</form>
 
-		// Get form data
-		const formData = new FormData(this);
-		
-		// Convert form data to JSON format
-		const jsonData = {};
-		formData.forEach((value, key) => {
-			jsonData[key] = value;
-		});
-		
-		// Send POST request to Python API
-		fetch('/api/base', {
-			method: 'POST',
-			headers: {
-			'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(jsonData)
-		})
-		.then(response => response.blob())  // Convert the response to a Blob
-      .then(blob => {
-        // Create a download link for the PDF
-        var url = window.URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'Programa.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-		});
-	</script>
-	
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
