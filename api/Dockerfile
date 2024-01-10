@@ -30,7 +30,7 @@ EXPOSE 5000
 ENV FLASK_APP=main.py
 CMD ["flask", "run", "--host", "0.0.0.0"]
 # CMD ["python3", "tests.py"] 
-# CMD ["python3", "csv_writer.py"] 
+# CMD ["python3", "csv_writer.py", "Testing_Orchestra"] 
 # CMD ["python3", "fillpdf_program.py"]
-# CMD ["python3", "fillpdf.py"]
+#  CMD ["python3", "fillpdf.py", "Testing_Orchestra"]
 #  CMD ["python3", "fillxlsx.py"]

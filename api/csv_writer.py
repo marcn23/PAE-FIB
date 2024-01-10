@@ -145,6 +145,7 @@ if __name__ == "__main__":
     act = Act("1","Testing", "Test_name", "Barcelona", "Barcelona", "26/11/2023", "30/11/2023", [song1,song2])
     act2 = Act("1","Testing2", "Test_name", "Barcelona", "Barcelona", "26/11/2023", "30/11/2023", [song1,song2])
     org = Organization([act,act2],"2","Testing_Orchestra","Test","Barcelona","Barcelona","Barcelona","Barcelona","Marc","Rambles","34","fake@mail.com","6543490","2344535","23/11/2023","30/11/2023","fake_dni")
-    csv_writer.collect_XLSX_data(org)
-    file_path = 'output.csv'
+    autoliq = Autoliquidation("28/12/23","50€","29/12/23","30€","4","12","4€",[act,act2])
+    csv_writer.collect_Autoliquidation_data(autoliq,org)
+    file_path = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','Autoliquidations','Testing_Orchestra.csv'))
     csv_writer.write_to_csv(file_path)

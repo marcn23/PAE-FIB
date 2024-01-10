@@ -41,6 +41,7 @@ if __name__ == '__main__':
     pdf_fields = pdf.get_fields()
     csv_fields = data.columns.tolist()
     i = 0 #Filename numerical prefix
+    print(str(pdf_fields))
     for j, rows in data.iterrows():
         i += 1   
         pdf2 = PdfWriter()
@@ -51,8 +52,8 @@ if __name__ == '__main__':
         
         # Key = pdf_field_name : Value = csv_field_value
         field_dictionary_1 = {}
-        data = ["Audicions i/o ballades a: €:","Concursos de sardanes: Dies","Nombre de cobles","Si és gratuit:","Aplecs i/o concerts: Dies","nombre","Dia-1:","Full núm-1:","Dia-2:","Full núm-2:","Dia-3:","Full núm-3:","Dia-4:","Full núm-4:","Dia-5:","Full núm-5:","Dia-6:","Full núm-6:","Dia-7:","Full núm-7:","Dia-8:","Full núm-8:","Dia-9:","Full núm-9:","Dia-10:","Full núm-10:","NIF:","Agrupació sardanista:","Adreça:","Polbació:","Codi Postal:","Telèfon:","A:"]
-        keys = ["DiesAudicio","PreuAudicio","DiesConcurs","NombreDeCobles","DiesConcert","RecaptacioConcert","D1","FullN1","D2","FullN2","D3","FullN3","D4","FullN4","D5","FullN5","D6","FullN6","D7","FullN7","D8","FullN8","D9","FullN9","D10","FullN10","NIF","Agrupacio","Adreça","Població","CodiPostal","Telf","Lloc"]
+        data = ["Audicions i/o ballades: Dies","Audicions i/o ballades a: €:","Concursos de sardanes: Dies","Nombre de cobles","Si és gratuit: €","Aplecs i/o concerts: Dies","Dia-1:","Full núm-1:","Dia-2:","Full núm-2:","Dia-3:","Full núm-3:","Dia-4:","Full núm-4:","Dia-5:","Full núm-5:","Dia-6:","Full núm-6:","Dia-7:","Full núm-7:","Dia-8:","Full núm-8:","Dia-9:","Full núm-9:","Dia-10:","Full núm-10:","NIF:","Agrupació sardanista:","Adreça:","Polbació:","Codi Postal:","Telèfon:","A:"]
+        keys = ["DiesAudicio","PreuAudicio","DiesConcurs","NombreDeCobles","RecaptacioConcert","DiesConcert","D1","FullN1","D2","FullN2","D3","FullN3","D4","FullN4","D5","FullN5","D6","FullN6","D7","FullN7","D8","FullN8","D9","FullN9","D10","FullN10","NIF","Agrupacio","Adreça","Població","CodiPostal","Telf","Lloc"]
         print("other: " + str(len(data)))
         print("Keys: " + str(len(keys)))
         for key in range(len(keys)):

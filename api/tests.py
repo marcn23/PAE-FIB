@@ -21,7 +21,7 @@ if __name__ == '__main__':
     
     csv_writer = CSVWriter()
     csv_writer.collect_XLSX_data(org)
-    file_path = 'output.csv'
+    file_path = os.path.normpath(os.path.join(os.getcwd(),'in','CSVs','XLSX',str(org.name) +'.csv'))
     csv_writer.write_to_csv(file_path)
 
 
