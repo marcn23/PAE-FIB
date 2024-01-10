@@ -1,5 +1,5 @@
 # Projecte PAE - FIB
-El objetivo de la asignatura es trabajar en un proyecto multi-disciplinar partiendo de un reto definido por una empresa.
+L'objectiu de l'assignatura és treballar en un projecte multi-disciplinar partint d'un repte definit per una empresa.
 
 ## Repte confederació sardanista 
 
