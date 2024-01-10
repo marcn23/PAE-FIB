@@ -3,10 +3,10 @@ L'objectiu de l'assignatura és treballar en un projecte multi-disciplinar parti
 
 ## Repte confederació sardanista 
 
-Edgar-Xavier Martín: Back-End 
+**Edgar-Xavier Martín**: Responsable del Back-End .
 
-Marc Navarro: Back-End
+**Marc Navarro**: Responsable del Back-End.
 
-Jordi Soley: Base de dades y metabase
+**Jordi Soley**: Responsable de la Base de dades.
 
-Albert Vidal: Front-End
+**Albert Vidal**: Responsable del Front-End.
