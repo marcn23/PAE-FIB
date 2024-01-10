@@ -92,7 +92,7 @@
         <input type="text" id="Data-Fi" class="sepinput" name="Data-Fi" placeholder="Data Fi">
     </div>
     
-    <h2>Organització</h2>
+    <!--<h2>Organització</h2>
     <div class="form-group">
         <label for="Nom-declarant">Nom declarant:</label>
         <input type="text" id="Nom-declarant" class="sepinput" name="Nom-declarant" placeholder="Nom del declarant">
@@ -124,7 +124,7 @@
     <div class="form-group">
         <label for="Codigo-Socio-declarant">Codi soci SGAE:</label>
         <input type="text" id="Codigo-Socio-declarant" class="sepinput" name="Codigo-Socio-declarant" placeholder="Codi soci SGAE">
-    </div>
+    </div>-->
 
     <!--<h2>Signatura</h2>
     <div class="form-group">
@@ -164,7 +164,7 @@
             const form = document.querySelector('form');
             const div = document.createElement('div');
             div.classList.add('form-group');
-
+            
             const label = document.createElement('label');
             label.textContent = 'Titol:';
             label.for = 'titol';
@@ -234,7 +234,7 @@
             div5.appendChild(input5);
             
             var hrElement = document.createElement('hr');
-            const targ = form.querySelectorAll('div')[14];
+            const targ = form.querySelectorAll('div')[6];
             form.insertBefore(div5, targ.nextElementSibling);
             form.insertBefore(div4, targ.nextElementSibling);
             form.insertBefore(div3, targ.nextElementSibling);
